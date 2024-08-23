@@ -70,6 +70,7 @@ public class MovementController : MonoBehaviour
 
     void Update()
     {
+        handleGravity();
         handleRotation();
         characterController.Move((currentMovement * playerSpeed) * Time.deltaTime);
     }
