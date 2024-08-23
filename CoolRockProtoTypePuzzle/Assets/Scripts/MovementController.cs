@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 using Cinemachine;
 public class MovementController : MonoBehaviour
 {
+    [SerializeField] float playerSpeed = 5f;
     PlayerControl playerControl;
     CharacterController characterController;
     CinemachineVirtualCamera virtualCamera;
@@ -70,7 +71,7 @@ public class MovementController : MonoBehaviour
     void Update()
     {
         handleRotation();
-        characterController.Move(currentMovement * Time.deltaTime);
+        characterController.Move((currentMovement * playerSpeed) * Time.deltaTime);
     }
 
     private void OnEnable()
