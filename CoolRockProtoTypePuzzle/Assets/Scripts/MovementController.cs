@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+using Cinemachine;
 public class MovementController : MonoBehaviour
 {
     PlayerControl playerControl;
     CharacterController characterController;
+    CinemachineVirtualCamera virtualCamera;
 
     Vector2 currentMovementInput;
     Vector3 currentMovement;
@@ -16,7 +17,10 @@ public class MovementController : MonoBehaviour
     private void Awake()
     {
         playerControl = new PlayerControl();
-        characterController = GetComponent<CharacterController>();
+        characterController = GetComponentInChildren<CharacterController>();
+        virtualCamera = GetComponentInChildren<CinemachineVirtualCamera>();
+        virtualCamera.Follow = transform;
+        virtualCamera.LookAt = transform;
 
         playerControl.CharacterControl.Move.started += onMovementInput;
         playerControl.CharacterControl.Move.canceled += onMovementInput;
