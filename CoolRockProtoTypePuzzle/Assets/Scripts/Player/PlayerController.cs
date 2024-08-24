@@ -13,6 +13,18 @@ public class PlayerController : MonoBehaviour
     private bool isPlayerInteract = false;
     public bool IsPlayerInteract => isPlayerInteract;
 
+    [Header("SFX placeholder")]
+    [SerializeField]
+    private AudioClip guitar;
+    [SerializeField]
+    private AudioClip drum;
+    [SerializeField]
+    private AudioClip keyboard;
+    [SerializeField]
+    private AudioClip vocal;
+    [SerializeField]
+    private AudioSource audioSource;
+
     private void Awake() 
     {
         playerState = new PlayerState();
@@ -24,6 +36,7 @@ public class PlayerController : MonoBehaviour
     {
         PlayerInputManager.OnChangeInstrument += OnInstrumentChange;
         PlayerInputManager.OnPlayerInteract += OnPlayerInteract;
+        PlayerInputManager.OnNormalAttack += OnNormalAttack;
     }
 
     private void OnPlayerInteract(bool value)
@@ -34,23 +47,39 @@ public class PlayerController : MonoBehaviour
     private void OnInstrumentChange(int value)
     {
         playerState.OnInstrumentChange(value);
-        //color change
-        if(playerMesh == null) { return;}
+
+        
         switch(playerState.CurrnetInstrument)
         {
             case PlayerInstrumentType.Guitar:   
-                playerMesh.material.SetColor("_Color", Color.red);
+                SetPlayerColor(Color.red);
+                audioSource.clip = guitar;
                 break;
             case PlayerInstrumentType.Drum:
-                playerMesh.material.SetColor("_Color", Color.green);
+                SetPlayerColor(Color.green);
+                audioSource.clip = drum;
                 break;
             case PlayerInstrumentType.Keyboard:
-                playerMesh.material.SetColor("_Color", Color.blue);
+                SetPlayerColor(Color.blue);
+                audioSource.clip = keyboard;
                 break;
             case PlayerInstrumentType.Vocal:
-                playerMesh.material.SetColor("_Color", Color.gray);
+                SetPlayerColor(Color.gray);
+                audioSource.clip = vocal;
                 break;
         }
+    }
+
+    private void SetPlayerColor(Color color)
+    {
+        if(playerMesh == null) { return;}
+        playerMesh.material.SetColor("_Color", color);
+    }
+
+    private void OnNormalAttack()
+    {
+        if(audioSource == null) { return; }
+        audioSource.Play();
     }
 
     private void OnDisable()
