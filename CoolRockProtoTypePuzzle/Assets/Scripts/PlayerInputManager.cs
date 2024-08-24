@@ -16,6 +16,9 @@ public class PlayerInputManager : MonoBehaviour
 
     public delegate void PlayerInteract(bool value);
     public static event PlayerInteract OnPlayerInteract;
+
+    public delegate void NormalAttack();
+    public static event NormalAttack OnNormalAttack;
     //private int 
     private void Awake() 
     {
@@ -83,6 +86,7 @@ public class PlayerInputManager : MonoBehaviour
     private void OnNormalAttackInput(InputAction.CallbackContext context)
     {
         Debug.Log("Normal Attack");
+        OnNormalAttack.Invoke();
     }
 
     private void OnInstrumentInput(InputAction.CallbackContext context)
