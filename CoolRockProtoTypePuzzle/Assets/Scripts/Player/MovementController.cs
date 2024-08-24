@@ -6,7 +6,6 @@ using Cinemachine;
 public class MovementController : MonoBehaviour
 {
     [SerializeField] float playerSpeed = 5f;
-    PlayerControl playerControl;
     CharacterController characterController;
     CinemachineVirtualCamera virtualCamera;
 
@@ -17,15 +16,12 @@ public class MovementController : MonoBehaviour
 
     private void Awake()
     {
-        playerControl = new PlayerControl();
         characterController = GetComponentInChildren<CharacterController>();
         virtualCamera = GetComponentInChildren<CinemachineVirtualCamera>();
         virtualCamera.Follow = transform;
         virtualCamera.LookAt = transform;
 
-        playerControl.CharacterControl.Move.started += onMovementInput;
-        playerControl.CharacterControl.Move.canceled += onMovementInput;
-        playerControl.CharacterControl.Move.performed += onMovementInput;
+        PlayerInputManager.OnPlayerMovement += onMovementInput;
     }
 
     void handleRotation()
@@ -46,9 +42,9 @@ public class MovementController : MonoBehaviour
         
     }
 
-    void onMovementInput (InputAction.CallbackContext context)
+    void onMovementInput (Vector2 movement)
     {
-        currentMovementInput = context.ReadValue<Vector2>();
+        currentMovementInput = movement;
         currentMovement.x = currentMovementInput.x;
         currentMovement.z = currentMovementInput.y;
         isMovementPressed = currentMovementInput.x != 0 || currentMovementInput.y != 0;
@@ -74,14 +70,8 @@ public class MovementController : MonoBehaviour
         handleRotation();
         characterController.Move((currentMovement * playerSpeed) * Time.deltaTime);
     }
-
-    private void OnEnable()
-    {
-        playerControl.CharacterControl.Enable();
-    }
-
     private void OnDisable()
     {
-        playerControl.CharacterControl.Disable();
+        PlayerInputManager.OnPlayerMovement -= onMovementInput;
     }
 }
