@@ -35,6 +35,87 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Pitching"",
+                    ""type"": ""Value"",
+                    ""id"": ""50c9a74e-5ff8-4d1f-a7a3-69f1cf5a1093"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""ChangeInstrument"",
+                    ""type"": ""Button"",
+                    ""id"": ""8237f81b-586a-400e-9da9-1ec2f8428ccd"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""NormalAttack"",
+                    ""type"": ""Button"",
+                    ""id"": ""9f9acf37-e4ba-4f4d-b875-683b4a9a4f8d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SpecialAttack"",
+                    ""type"": ""Button"",
+                    ""id"": ""abdc4a36-c743-4207-9f97-a27324e7eb81"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""2db5f3ec-ad9f-4514-a7ed-015771ea6b35"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SoloModeUp"",
+                    ""type"": ""Button"",
+                    ""id"": ""9779034e-5247-449e-804e-2e5b5994d69e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SoloModeDown"",
+                    ""type"": ""Button"",
+                    ""id"": ""91fb1a4b-f6f8-4cb4-a91e-be4f5c5fbbfe"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SoloModeRight"",
+                    ""type"": ""Button"",
+                    ""id"": ""51ea13cc-c5ec-49fb-9a33-56f6dd7e6e65"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SoloModeLeft"",
+                    ""type"": ""Button"",
+                    ""id"": ""2b59e2a7-b190-4b86-9182-22dde209e9a0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -103,6 +184,292 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Keyboard"",
+                    ""id"": ""c1a738bc-a734-45fd-8596-1df8a58644f4"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeInstrument"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""13e8d8d0-4c3a-4040-81c6-0eaefbe9851b"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeInstrument"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""1f2baf9f-66d2-4cb6-94bb-363ab330eeff"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeInstrument"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Controller"",
+                    ""id"": ""25388f75-2f9c-4bd1-9923-804bc4e4291e"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeInstrument"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""31ba74b4-57fe-4972-a8d8-0c320c8b52e1"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeInstrument"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""6f69d568-117b-4a4c-bebc-019da26bcb2e"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeInstrument"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a31b0d99-e87d-4eb0-b45e-5d9e7e527331"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NormalAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""deadf368-130e-43a0-969d-ea40a1f4a3cd"",
+                    ""path"": ""<Keyboard>/j"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NormalAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b6e60193-f757-4c52-8561-a85bfa32f874"",
+                    ""path"": ""<Keyboard>/k"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SpecialAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5e8ac905-d36d-45c8-b8d7-ec56cd910ff4"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SpecialAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""86e5d61c-af1d-4f53-bed3-6762c2173de2"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""876fd209-9c6e-498e-bf87-a6aa2dd32f99"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""462217b4-bde5-4967-b9b8-a811d7fde159"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SoloModeUp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cec804af-bde5-44e5-bfb4-e5bcad15b18b"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SoloModeUp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4a121c09-aea9-430b-a360-8db6c1a58ed6"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SoloModeDown"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""08938e1b-bc44-4b4c-8de4-bc9de9f470ad"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SoloModeDown"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fb3d267b-a7c9-40a1-8306-b0964c149719"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SoloModeRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""76417422-dba4-4bc5-854a-bb11c56d9c79"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SoloModeRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""14633818-ebe9-413e-ad91-0317c0119e87"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SoloModeLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""da785d2d-8255-4b7a-8af4-5886ee913305"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SoloModeLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9f231c6f-48ff-43c9-8b89-608aa0935da0"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pitching"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""c5f9bdca-3758-417a-b5fd-631747228ba3"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pitching"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""7effe033-a414-4ca5-a2b4-a08ffbb73b4c"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pitching"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""bda732cc-c756-4b9a-af39-baa519602a27"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pitching"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""5287f2f7-b794-4e19-9f13-e911e87a98a6"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pitching"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""d3ea6ba2-bc85-4f43-a1ad-c61fbb38c183"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pitching"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -112,6 +479,15 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
         // CharacterControl
         m_CharacterControl = asset.FindActionMap("CharacterControl", throwIfNotFound: true);
         m_CharacterControl_Move = m_CharacterControl.FindAction("Move", throwIfNotFound: true);
+        m_CharacterControl_Pitching = m_CharacterControl.FindAction("Pitching", throwIfNotFound: true);
+        m_CharacterControl_ChangeInstrument = m_CharacterControl.FindAction("ChangeInstrument", throwIfNotFound: true);
+        m_CharacterControl_NormalAttack = m_CharacterControl.FindAction("NormalAttack", throwIfNotFound: true);
+        m_CharacterControl_SpecialAttack = m_CharacterControl.FindAction("SpecialAttack", throwIfNotFound: true);
+        m_CharacterControl_Interact = m_CharacterControl.FindAction("Interact", throwIfNotFound: true);
+        m_CharacterControl_SoloModeUp = m_CharacterControl.FindAction("SoloModeUp", throwIfNotFound: true);
+        m_CharacterControl_SoloModeDown = m_CharacterControl.FindAction("SoloModeDown", throwIfNotFound: true);
+        m_CharacterControl_SoloModeRight = m_CharacterControl.FindAction("SoloModeRight", throwIfNotFound: true);
+        m_CharacterControl_SoloModeLeft = m_CharacterControl.FindAction("SoloModeLeft", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -174,11 +550,29 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_CharacterControl;
     private List<ICharacterControlActions> m_CharacterControlActionsCallbackInterfaces = new List<ICharacterControlActions>();
     private readonly InputAction m_CharacterControl_Move;
+    private readonly InputAction m_CharacterControl_Pitching;
+    private readonly InputAction m_CharacterControl_ChangeInstrument;
+    private readonly InputAction m_CharacterControl_NormalAttack;
+    private readonly InputAction m_CharacterControl_SpecialAttack;
+    private readonly InputAction m_CharacterControl_Interact;
+    private readonly InputAction m_CharacterControl_SoloModeUp;
+    private readonly InputAction m_CharacterControl_SoloModeDown;
+    private readonly InputAction m_CharacterControl_SoloModeRight;
+    private readonly InputAction m_CharacterControl_SoloModeLeft;
     public struct CharacterControlActions
     {
         private @PlayerControl m_Wrapper;
         public CharacterControlActions(@PlayerControl wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_CharacterControl_Move;
+        public InputAction @Pitching => m_Wrapper.m_CharacterControl_Pitching;
+        public InputAction @ChangeInstrument => m_Wrapper.m_CharacterControl_ChangeInstrument;
+        public InputAction @NormalAttack => m_Wrapper.m_CharacterControl_NormalAttack;
+        public InputAction @SpecialAttack => m_Wrapper.m_CharacterControl_SpecialAttack;
+        public InputAction @Interact => m_Wrapper.m_CharacterControl_Interact;
+        public InputAction @SoloModeUp => m_Wrapper.m_CharacterControl_SoloModeUp;
+        public InputAction @SoloModeDown => m_Wrapper.m_CharacterControl_SoloModeDown;
+        public InputAction @SoloModeRight => m_Wrapper.m_CharacterControl_SoloModeRight;
+        public InputAction @SoloModeLeft => m_Wrapper.m_CharacterControl_SoloModeLeft;
         public InputActionMap Get() { return m_Wrapper.m_CharacterControl; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -191,6 +585,33 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
             @Move.started += instance.OnMove;
             @Move.performed += instance.OnMove;
             @Move.canceled += instance.OnMove;
+            @Pitching.started += instance.OnPitching;
+            @Pitching.performed += instance.OnPitching;
+            @Pitching.canceled += instance.OnPitching;
+            @ChangeInstrument.started += instance.OnChangeInstrument;
+            @ChangeInstrument.performed += instance.OnChangeInstrument;
+            @ChangeInstrument.canceled += instance.OnChangeInstrument;
+            @NormalAttack.started += instance.OnNormalAttack;
+            @NormalAttack.performed += instance.OnNormalAttack;
+            @NormalAttack.canceled += instance.OnNormalAttack;
+            @SpecialAttack.started += instance.OnSpecialAttack;
+            @SpecialAttack.performed += instance.OnSpecialAttack;
+            @SpecialAttack.canceled += instance.OnSpecialAttack;
+            @Interact.started += instance.OnInteract;
+            @Interact.performed += instance.OnInteract;
+            @Interact.canceled += instance.OnInteract;
+            @SoloModeUp.started += instance.OnSoloModeUp;
+            @SoloModeUp.performed += instance.OnSoloModeUp;
+            @SoloModeUp.canceled += instance.OnSoloModeUp;
+            @SoloModeDown.started += instance.OnSoloModeDown;
+            @SoloModeDown.performed += instance.OnSoloModeDown;
+            @SoloModeDown.canceled += instance.OnSoloModeDown;
+            @SoloModeRight.started += instance.OnSoloModeRight;
+            @SoloModeRight.performed += instance.OnSoloModeRight;
+            @SoloModeRight.canceled += instance.OnSoloModeRight;
+            @SoloModeLeft.started += instance.OnSoloModeLeft;
+            @SoloModeLeft.performed += instance.OnSoloModeLeft;
+            @SoloModeLeft.canceled += instance.OnSoloModeLeft;
         }
 
         private void UnregisterCallbacks(ICharacterControlActions instance)
@@ -198,6 +619,33 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
             @Move.started -= instance.OnMove;
             @Move.performed -= instance.OnMove;
             @Move.canceled -= instance.OnMove;
+            @Pitching.started -= instance.OnPitching;
+            @Pitching.performed -= instance.OnPitching;
+            @Pitching.canceled -= instance.OnPitching;
+            @ChangeInstrument.started -= instance.OnChangeInstrument;
+            @ChangeInstrument.performed -= instance.OnChangeInstrument;
+            @ChangeInstrument.canceled -= instance.OnChangeInstrument;
+            @NormalAttack.started -= instance.OnNormalAttack;
+            @NormalAttack.performed -= instance.OnNormalAttack;
+            @NormalAttack.canceled -= instance.OnNormalAttack;
+            @SpecialAttack.started -= instance.OnSpecialAttack;
+            @SpecialAttack.performed -= instance.OnSpecialAttack;
+            @SpecialAttack.canceled -= instance.OnSpecialAttack;
+            @Interact.started -= instance.OnInteract;
+            @Interact.performed -= instance.OnInteract;
+            @Interact.canceled -= instance.OnInteract;
+            @SoloModeUp.started -= instance.OnSoloModeUp;
+            @SoloModeUp.performed -= instance.OnSoloModeUp;
+            @SoloModeUp.canceled -= instance.OnSoloModeUp;
+            @SoloModeDown.started -= instance.OnSoloModeDown;
+            @SoloModeDown.performed -= instance.OnSoloModeDown;
+            @SoloModeDown.canceled -= instance.OnSoloModeDown;
+            @SoloModeRight.started -= instance.OnSoloModeRight;
+            @SoloModeRight.performed -= instance.OnSoloModeRight;
+            @SoloModeRight.canceled -= instance.OnSoloModeRight;
+            @SoloModeLeft.started -= instance.OnSoloModeLeft;
+            @SoloModeLeft.performed -= instance.OnSoloModeLeft;
+            @SoloModeLeft.canceled -= instance.OnSoloModeLeft;
         }
 
         public void RemoveCallbacks(ICharacterControlActions instance)
@@ -218,5 +666,14 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
     public interface ICharacterControlActions
     {
         void OnMove(InputAction.CallbackContext context);
+        void OnPitching(InputAction.CallbackContext context);
+        void OnChangeInstrument(InputAction.CallbackContext context);
+        void OnNormalAttack(InputAction.CallbackContext context);
+        void OnSpecialAttack(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
+        void OnSoloModeUp(InputAction.CallbackContext context);
+        void OnSoloModeDown(InputAction.CallbackContext context);
+        void OnSoloModeRight(InputAction.CallbackContext context);
+        void OnSoloModeLeft(InputAction.CallbackContext context);
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,9 +18,20 @@ public class PlayerState
         playerVolume = 1;
     }
 
-    public void OnInstrumentChange(PlayerInstrumentType playerInstrumentType)
+    public void OnInstrumentChange(int valueToAdd)
     {
-        currentInstrument = playerInstrumentType;
+        int length = Enum.GetNames(typeof(PlayerInstrumentType)).Length;
+        int currentValue = (int)currentInstrument;
+        currentValue += valueToAdd;
+        if(currentValue == length)
+        {
+            currentValue = 0;
+        }
+        else if(currentValue < 0)
+        {
+            currentValue = length - 1;
+        }
+        currentInstrument = (PlayerInstrumentType)currentValue;
     }
 
     public void OnPlayerVolumeChange(int newVolume)
