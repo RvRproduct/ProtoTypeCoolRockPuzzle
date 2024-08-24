@@ -6,6 +6,7 @@ public abstract class Interactable : MonoBehaviour
 {
     private MeshRenderer meshRenderer;
     private SphereCollider sphereCollider;
+    [HideInInspector] public static GameObject playerObject;
     [SerializeField]
     private float interactRange = 3;
     private void Awake() 
@@ -38,6 +39,7 @@ public abstract class Interactable : MonoBehaviour
         {
             if(player.IsPlayerInteract)
             {
+                playerObject = other.gameObject;
                 Interact();
                 player.ResetInteract();
             }

@@ -36,7 +36,9 @@ public class PlayerState
 
     public void OnPlayerVolumeChange(int newVolume)
     {
+        Debug.Log($"Previous Volume {playerVolume}");
         playerVolume = newVolume;
+        Debug.Log($"New Volume {playerVolume}");
     }
 }
 

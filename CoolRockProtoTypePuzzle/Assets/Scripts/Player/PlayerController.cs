@@ -54,17 +54,21 @@ public class PlayerController : MonoBehaviour
             case PlayerInstrumentType.Guitar:   
                 SetPlayerColor(Color.red);
                 audioSource.clip = guitar;
+                Debug.Log("Guitar");
                 break;
             case PlayerInstrumentType.Drum:
                 SetPlayerColor(Color.green);
+                Debug.Log("Drum");
                 audioSource.clip = drum;
                 break;
             case PlayerInstrumentType.Keyboard:
                 SetPlayerColor(Color.blue);
+                Debug.Log("KeyBoard");
                 audioSource.clip = keyboard;
                 break;
             case PlayerInstrumentType.Vocal:
                 SetPlayerColor(Color.gray);
+                Debug.Log("Vocal");
                 audioSource.clip = vocal;
                 break;
         }
