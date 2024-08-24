@@ -10,6 +10,9 @@ public class PlayerInputManager : MonoBehaviour
 
     public delegate void ChangeInstrument(int value);
     public static event ChangeInstrument OnChangeInstrument;
+
+    public delegate void PlayerMovement(Vector2 value);
+    public static event PlayerMovement OnPlayerMovement;
     //private int 
     private void Awake() 
     {
@@ -20,6 +23,12 @@ public class PlayerInputManager : MonoBehaviour
         playerControl.CharacterControl.Move.performed += onMovementInput;
 
         playerControl.CharacterControl.ChangeInstrument.started += OnInstrumentInput;
+        
+        //normal attack
+        //special attack
+        //interact
+        //solomode
+        //pitching
     }
 
     private void OnInstrumentInput(InputAction.CallbackContext context)
@@ -31,23 +40,9 @@ public class PlayerInputManager : MonoBehaviour
 
     private void onMovementInput(InputAction.CallbackContext context)
     {
-        Debug.Log("MOVE");
-        // currentMovementInput = context.ReadValue<Vector2>();
-        // currentMovement.x = currentMovementInput.x;
-        // currentMovement.z = currentMovementInput.y;
-        // isMovementPressed = currentMovementInput.x != 0 || currentMovementInput.y != 0;
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        //Debug.Log("MOVE");
+        Vector2 currentInput = context.ReadValue<Vector2>();
+        OnPlayerMovement.Invoke(currentInput);
     }
 
     private void OnEnable()

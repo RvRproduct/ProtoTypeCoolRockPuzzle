@@ -20,12 +20,6 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         PlayerInputManager.OnChangeInstrument += OnInstrumentChange;
-        //movement
-        //normal attack
-        //special attack
-        //interact
-        //solomode
-        //pitching
     }
 
     private void OnInstrumentChange(int value)
@@ -48,6 +42,11 @@ public class PlayerController : MonoBehaviour
                 playerMesh.material.SetColor("_Color", Color.gray);
                 break;
         }
+    }
+
+    private void OnDisable()
+    {
+        PlayerInputManager.OnChangeInstrument -= OnInstrumentChange;
     }
 
 
