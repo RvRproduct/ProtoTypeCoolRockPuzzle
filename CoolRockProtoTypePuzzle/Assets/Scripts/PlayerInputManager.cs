@@ -13,6 +13,9 @@ public class PlayerInputManager : MonoBehaviour
 
     public delegate void PlayerMovement(Vector2 value);
     public static event PlayerMovement OnPlayerMovement;
+
+    public delegate void PlayerInteract(bool value);
+    public static event PlayerInteract OnPlayerInteract;
     //private int 
     private void Awake() 
     {
@@ -28,6 +31,7 @@ public class PlayerInputManager : MonoBehaviour
         playerControl.CharacterControl.SpecialAttack.started += OnSpecialAttackInput;
 
         playerControl.CharacterControl.Interact.started += OnInteractInput;
+        playerControl.CharacterControl.Interact.canceled += OnInteractInput;
 
         playerControl.CharacterControl.SoloModeDown.started += OnSoloModeDownInput;
         playerControl.CharacterControl.SoloModeRight.started += OnSoloModeRightInput;
@@ -66,7 +70,9 @@ public class PlayerInputManager : MonoBehaviour
 
     private void OnInteractInput(InputAction.CallbackContext context)
     {
-        Debug.Log("Interact");
+        bool currentInput = context.ReadValue<float>() > 0.1f ? true : false;
+        //Debug.Log("Interact: " + currentInput);
+        OnPlayerInteract.Invoke(currentInput);
     }
 
     private void OnSpecialAttackInput(InputAction.CallbackContext context)

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -9,6 +10,8 @@ public class PlayerController : MonoBehaviour
     public PlayerState PlayerState => playerState;
     [SerializeField]
     private MeshRenderer playerMesh;
+    private bool isPlayerInteract = false;
+    public bool IsPlayerInteract => isPlayerInteract;
 
     private void Awake() 
     {
@@ -20,6 +23,12 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         PlayerInputManager.OnChangeInstrument += OnInstrumentChange;
+        PlayerInputManager.OnPlayerInteract += OnPlayerInteract;
+    }
+
+    private void OnPlayerInteract(bool value)
+    {
+        isPlayerInteract = value;
     }
 
     private void OnInstrumentChange(int value)
@@ -49,5 +58,8 @@ public class PlayerController : MonoBehaviour
         PlayerInputManager.OnChangeInstrument -= OnInstrumentChange;
     }
 
-
+    public void ResetInteract()
+    {
+        isPlayerInteract = false;
+    }
 }
