@@ -23,12 +23,60 @@ public class PlayerInputManager : MonoBehaviour
         playerControl.CharacterControl.Move.performed += onMovementInput;
 
         playerControl.CharacterControl.ChangeInstrument.started += OnInstrumentInput;
-        
-        //normal attack
-        //special attack
-        //interact
-        //solomode
-        //pitching
+
+        playerControl.CharacterControl.NormalAttack.started += OnNormalAttackInput;
+        playerControl.CharacterControl.SpecialAttack.started += OnSpecialAttackInput;
+
+        playerControl.CharacterControl.Interact.started += OnInteractInput;
+
+        playerControl.CharacterControl.SoloModeDown.started += OnSoloModeDownInput;
+        playerControl.CharacterControl.SoloModeRight.started += OnSoloModeRightInput;
+        playerControl.CharacterControl.SoloModeLeft.started += OnSoloModeLeftInput;
+        playerControl.CharacterControl.SoloModeUp.started += OnSoloModeUpInput;
+
+        playerControl.CharacterControl.Pitching.started += OnPitchingInput;
+        playerControl.CharacterControl.Pitching.canceled += OnPitchingInput;
+        playerControl.CharacterControl.Pitching.performed += OnPitchingInput;
+    }
+
+    private void OnPitchingInput(InputAction.CallbackContext context)
+    {
+        //Debug.Log("Pitching");
+    }
+
+    private void OnSoloModeUpInput(InputAction.CallbackContext context)
+    {
+        Debug.Log("Solo Up");
+    }
+
+    private void OnSoloModeLeftInput(InputAction.CallbackContext context)
+    {
+        Debug.Log("Solo Left");
+    }
+
+    private void OnSoloModeRightInput(InputAction.CallbackContext context)
+    {
+        Debug.Log("Solo Right");
+    }
+
+    private void OnSoloModeDownInput(InputAction.CallbackContext context)
+    {
+        Debug.Log("Solo Down");
+    }
+
+    private void OnInteractInput(InputAction.CallbackContext context)
+    {
+        Debug.Log("Interact");
+    }
+
+    private void OnSpecialAttackInput(InputAction.CallbackContext context)
+    {
+        Debug.Log("Special Attack");
+    }
+
+    private void OnNormalAttackInput(InputAction.CallbackContext context)
+    {
+        Debug.Log("Normal Attack");
     }
 
     private void OnInstrumentInput(InputAction.CallbackContext context)
