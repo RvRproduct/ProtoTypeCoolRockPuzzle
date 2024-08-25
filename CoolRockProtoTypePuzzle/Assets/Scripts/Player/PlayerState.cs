@@ -15,7 +15,7 @@ public class PlayerState
     public void InitPlayerState()
     {
         currentInstrument = PlayerInstrumentType.Guitar;
-        playerVolume = 1;
+        playerVolume = 2;
     }
 
     public void OnInstrumentChange(int valueToAdd)

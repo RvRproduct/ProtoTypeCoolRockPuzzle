@@ -22,9 +22,12 @@ public class PlayerInputManager : MonoBehaviour
 
     public delegate void SpecialAttack();
     public static event SpecialAttack OnSpecialAttack;
+
+
     //private int 
     private void Awake() 
     {
+
         playerControl = new PlayerControl();
 
         playerControl.CharacterControl.Move.started += onMovementInput;

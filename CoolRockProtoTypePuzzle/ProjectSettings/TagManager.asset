@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Attack
+  - Volume1
+  - Volume2
+  - Volume3
   layers:
   - Default
   - TransparentFX

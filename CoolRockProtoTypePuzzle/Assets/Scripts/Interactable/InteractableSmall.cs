@@ -8,9 +8,9 @@ public class InteractableSmall : Interactable
     {
         Debug.Log("Small BOy");
         Vector3 smallSize = new Vector3(0.5f, 0.5f, 0.5f);
-        int smallVolume = 0;
+        int smallVolume = 1;
         Vector3 normalSize = new Vector3(1, 1, 1);
-        int normalVolume = 1;
+        int normalVolume = 2;
 
         PlayerState playerState = playerObject.GetComponent<PlayerController>().PlayerState;
 
