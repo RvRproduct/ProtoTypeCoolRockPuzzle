@@ -342,7 +342,6 @@ GameObject:
   - component: {fileID: 1483527558191226879}
   - component: {fileID: 5035751895684766109}
   - component: {fileID: 3136187678372450883}
-  - component: {fileID: 7049294160487461832}
   - component: {fileID: 1309180487285913031}
   m_Layer: 0
   m_Name: Player
@@ -369,6 +368,7 @@ Transform:
   - {fileID: 8496808261809506482}
   - {fileID: 417859614565074174}
   - {fileID: 5532988373961218851}
+  - {fileID: 7751442764362512164}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7735450429524036295
@@ -497,24 +497,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerMesh: {fileID: 4817744779692086967}
   maxAttackCoolDown: 0.5
+  currentAttack: 0
   guitar: {fileID: 8300000, guid: 666c2e0a361bfdd47b9a940b2f8a4f70, type: 3}
   drum: {fileID: 8300000, guid: 05fc9dc025b460e44bd4614b5d161e4d, type: 3}
   keyboard: {fileID: 8300000, guid: 5de9245a129c5e94f9df873a4cf6d77e, type: 3}
   vocal: {fileID: 8300000, guid: 1e69440838a1cbc4185c30adb7733de0, type: 3}
   audioSource: {fileID: 1309180487285913031}
---- !u!114 &7049294160487461832
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5954377320880300969}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af3940995d79dcd4cade43681875557d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  vocalNormal: {fileID: 5359123451998605911, guid: 935297b8f919ad04f9763c66aeb79da7, type: 3}
 --- !u!82 &1309180487285913031
 AudioSource:
   m_ObjectHideFlags: 0
@@ -796,3 +784,73 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e8b78ac948f05a46a6d8339a503172b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &8531876943785386263
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1518911965826500537}
+    m_Modifications:
+    - target: {fileID: 2158905101911397939, guid: 935297b8f919ad04f9763c66aeb79da7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2158905101911397939, guid: 935297b8f919ad04f9763c66aeb79da7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2158905101911397939, guid: 935297b8f919ad04f9763c66aeb79da7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2158905101911397939, guid: 935297b8f919ad04f9763c66aeb79da7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2158905101911397939, guid: 935297b8f919ad04f9763c66aeb79da7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2158905101911397939, guid: 935297b8f919ad04f9763c66aeb79da7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2158905101911397939, guid: 935297b8f919ad04f9763c66aeb79da7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2158905101911397939, guid: 935297b8f919ad04f9763c66aeb79da7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2158905101911397939, guid: 935297b8f919ad04f9763c66aeb79da7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2158905101911397939, guid: 935297b8f919ad04f9763c66aeb79da7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5359123451998605911, guid: 935297b8f919ad04f9763c66aeb79da7, type: 3}
+      propertyPath: m_Name
+      value: Scream Attack
+      objectReference: {fileID: 0}
+    - target: {fileID: 5359123451998605911, guid: 935297b8f919ad04f9763c66aeb79da7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5359123451998605911, guid: 935297b8f919ad04f9763c66aeb79da7, type: 3}
+      propertyPath: m_TagString
+      value: Scream
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 935297b8f919ad04f9763c66aeb79da7, type: 3}
+--- !u!4 &7751442764362512164 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2158905101911397939, guid: 935297b8f919ad04f9763c66aeb79da7, type: 3}
+  m_PrefabInstance: {fileID: 8531876943785386263}
+  m_PrefabAsset: {fileID: 0}

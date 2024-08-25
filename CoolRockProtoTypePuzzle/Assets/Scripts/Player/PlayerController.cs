@@ -16,8 +16,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float maxAttackCoolDown = 0.5f;
     private float currentAttackCoolDown = 0.5f;
-
-    private PlayerTools playerTools;
+    [HideInInspector] public Attacks currentAttack;
 
     [Header("SFX placeholder")]
     [SerializeField]
@@ -31,9 +30,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private AudioSource audioSource;
 
-    private void Awake() 
-    {
-        playerTools = GetComponent<PlayerTools>();
+    private void Awake()
+    { 
         playerState = new PlayerState();
         playerState.InitPlayerState();
         OnInstrumentChange(0);
@@ -55,7 +53,7 @@ public class PlayerController : MonoBehaviour
 
             if (currentAttackCoolDown >= maxAttackCoolDown)
             {
-                resetAttacks();
+                resetAttacks(PlayerAttacks.GetAttackName(currentAttack));
             }
 
             if (currentAttackCoolDown > maxAttackCoolDown)
@@ -155,30 +153,43 @@ public class PlayerController : MonoBehaviour
                     break;
                 case PlayerInstrumentType.Vocal:
                     Debug.Log("Vocal Normal");
-                    whichNormalAttack(playerTools.vocalNormal);
+                    currentAttack = Attacks.Scream;
                     break;
             }
+
+            if (currentAttack != Attacks.None)
+            {
+                whichNormalAttack(PlayerAttacks.GetAttackName(currentAttack));
+            }
+            
         }
     }
 
-    private void whichNormalAttack(GameObject theAttack)
-    {
-        GameObject normalAttack = Instantiate(theAttack);
-        normalAttack.transform.SetParent(transform);
-        normalAttack.transform.localPosition = new Vector3(0, 0, 0);
-        normalAttack.transform.localRotation = Quaternion.identity;
-        normalAttack.transform.localScale = Vector3.one;
-    }
-
-    private void resetAttacks()
+    private void whichNormalAttack(string attackName)
     {
         foreach (Transform child in transform)
         {
-            if (child.CompareTag("Attack"))
+            if (child.CompareTag(attackName))
             {
-                Destroy(child.gameObject);
+                child.gameObject.SetActive(true);
+                break;
             }
         }
+    }
+
+    private void resetAttacks(string attackName)
+    {
+        foreach (Transform child in transform)
+        {
+            if (child.CompareTag(attackName))
+            {
+                child.gameObject.SetActive(false);
+                currentAttack = Attacks.None;
+                break;
+            }
+        }
+
+
     }
 
     private void OnDisable()

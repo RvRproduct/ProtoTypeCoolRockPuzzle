@@ -1,0 +1,28 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public enum Attacks
+{
+    None,
+    Scream
+}
+
+public static class PlayerAttacks
+{
+    public static readonly Dictionary<Attacks, string> AttackNames = new Dictionary<Attacks, string>()
+    {
+        { Attacks.None, "None"},
+        { Attacks.Scream, "Scream"}
+    };
+
+    public static string GetAttackName(Attacks attack)
+    {
+        if (AttackNames.TryGetValue(attack, out string attackName))
+        {
+            return attackName;
+        }
+
+        return "Unknown Attack";
+    }
+}

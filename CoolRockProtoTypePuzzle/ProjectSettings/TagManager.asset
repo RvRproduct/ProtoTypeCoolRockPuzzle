@@ -8,6 +8,8 @@ TagManager:
   - Volume1
   - Volume2
   - Volume3
+  - Scream
+  - None
   layers:
   - Default
   - TransparentFX
