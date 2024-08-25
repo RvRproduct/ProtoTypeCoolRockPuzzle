@@ -342,6 +342,7 @@ GameObject:
   - component: {fileID: 1483527558191226879}
   - component: {fileID: 5035751895684766109}
   - component: {fileID: 3136187678372450883}
+  - component: {fileID: 7049294160487461832}
   - component: {fileID: 1309180487285913031}
   m_Layer: 0
   m_Name: Player
@@ -359,7 +360,7 @@ Transform:
   m_GameObject: {fileID: 5954377320880300969}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.358121, y: 1.12, z: -5.7676907}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -495,11 +496,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMesh: {fileID: 4817744779692086967}
+  maxAttackCoolDown: 0.5
   guitar: {fileID: 8300000, guid: 666c2e0a361bfdd47b9a940b2f8a4f70, type: 3}
   drum: {fileID: 8300000, guid: 05fc9dc025b460e44bd4614b5d161e4d, type: 3}
   keyboard: {fileID: 8300000, guid: 5de9245a129c5e94f9df873a4cf6d77e, type: 3}
   vocal: {fileID: 8300000, guid: 1e69440838a1cbc4185c30adb7733de0, type: 3}
   audioSource: {fileID: 1309180487285913031}
+--- !u!114 &7049294160487461832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5954377320880300969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af3940995d79dcd4cade43681875557d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vocalNormal: {fileID: 5359123451998605911, guid: 935297b8f919ad04f9763c66aeb79da7, type: 3}
 --- !u!82 &1309180487285913031
 AudioSource:
   m_ObjectHideFlags: 0

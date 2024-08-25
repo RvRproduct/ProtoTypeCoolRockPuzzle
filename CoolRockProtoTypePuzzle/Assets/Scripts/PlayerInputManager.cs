@@ -19,6 +19,9 @@ public class PlayerInputManager : MonoBehaviour
 
     public delegate void NormalAttack();
     public static event NormalAttack OnNormalAttack;
+
+    public delegate void SpecialAttack();
+    public static event SpecialAttack OnSpecialAttack;
     //private int 
     private void Awake() 
     {
@@ -80,12 +83,13 @@ public class PlayerInputManager : MonoBehaviour
 
     private void OnSpecialAttackInput(InputAction.CallbackContext context)
     {
-        Debug.Log("Special Attack");
+        //Debug.Log("Special Attack");
+        OnSpecialAttack.Invoke();
     }
 
     private void OnNormalAttackInput(InputAction.CallbackContext context)
     {
-        Debug.Log("Normal Attack");
+        //Debug.Log("Normal Attack");
         OnNormalAttack.Invoke();
     }
 

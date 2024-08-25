@@ -13,6 +13,12 @@ public class PlayerController : MonoBehaviour
     private bool isPlayerInteract = false;
     public bool IsPlayerInteract => isPlayerInteract;
 
+    [SerializeField]
+    private float maxAttackCoolDown = 0.5f;
+    private float currentAttackCoolDown = 0.5f;
+
+    private PlayerTools playerTools;
+
     [Header("SFX placeholder")]
     [SerializeField]
     private AudioClip guitar;
@@ -27,6 +33,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake() 
     {
+        playerTools = GetComponent<PlayerTools>();
         playerState = new PlayerState();
         playerState.InitPlayerState();
         OnInstrumentChange(0);
@@ -37,6 +44,25 @@ public class PlayerController : MonoBehaviour
         PlayerInputManager.OnChangeInstrument += OnInstrumentChange;
         PlayerInputManager.OnPlayerInteract += OnPlayerInteract;
         PlayerInputManager.OnNormalAttack += OnNormalAttack;
+        PlayerInputManager.OnSpecialAttack += OnSpecialAttack;
+    }
+
+    private void Update()
+    {
+        if (currentAttackCoolDown < maxAttackCoolDown)
+        {
+            currentAttackCoolDown += Time.deltaTime;
+
+            if (currentAttackCoolDown >= maxAttackCoolDown)
+            {
+                resetAttacks();
+            }
+
+            if (currentAttackCoolDown > maxAttackCoolDown)
+            {
+                currentAttackCoolDown = maxAttackCoolDown;
+            }
+        }
     }
 
     private void OnPlayerInteract(bool value)
@@ -80,10 +106,79 @@ public class PlayerController : MonoBehaviour
         playerMesh.material.SetColor("_Color", color);
     }
 
+    private void OnSpecialAttack()
+    {
+        if (currentAttackCoolDown >= maxAttackCoolDown)
+        {
+            currentAttackCoolDown = 0.0f;
+
+            if (audioSource == null) { return; }
+            audioSource.Play();
+
+            switch (playerState.CurrnetInstrument)
+            {
+                case PlayerInstrumentType.Guitar:
+                    Debug.Log("Guitar Special");
+                    break;
+                case PlayerInstrumentType.Drum:
+                    Debug.Log("Drum Special");
+                    break;
+                case PlayerInstrumentType.Keyboard:
+                    Debug.Log("KeyBoard Special");
+                    break;
+                case PlayerInstrumentType.Vocal:
+                    Debug.Log("Vocal Special");
+                    break;
+            }
+        }
+    }
+
     private void OnNormalAttack()
     {
-        if(audioSource == null) { return; }
-        audioSource.Play();
+        if (currentAttackCoolDown >= maxAttackCoolDown)
+        {
+            currentAttackCoolDown = 0.0f;
+
+            if (audioSource == null) { return; }
+            audioSource.Play();
+
+            switch (playerState.CurrnetInstrument)
+            {
+                case PlayerInstrumentType.Guitar:
+                    Debug.Log("Guitar Normal");
+                    break;
+                case PlayerInstrumentType.Drum:
+                    Debug.Log("Drum Normal");
+                    break;
+                case PlayerInstrumentType.Keyboard:
+                    Debug.Log("KeyBoard Normal");
+                    break;
+                case PlayerInstrumentType.Vocal:
+                    Debug.Log("Vocal Normal");
+                    whichNormalAttack(playerTools.vocalNormal);
+                    break;
+            }
+        }
+    }
+
+    private void whichNormalAttack(GameObject theAttack)
+    {
+        GameObject normalAttack = Instantiate(theAttack);
+        normalAttack.transform.SetParent(transform);
+        normalAttack.transform.localPosition = new Vector3(0, 0, 0);
+        normalAttack.transform.localRotation = Quaternion.identity;
+        normalAttack.transform.localScale = Vector3.one;
+    }
+
+    private void resetAttacks()
+    {
+        foreach (Transform child in transform)
+        {
+            if (child.CompareTag("Attack"))
+            {
+                Destroy(child.gameObject);
+            }
+        }
     }
 
     private void OnDisable()
