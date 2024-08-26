@@ -198,7 +198,7 @@ public class PlayerController : MonoBehaviour
                     break;
             }
 
-            if (currentAttack != Attacks.None || currentAttack != Attacks.Pitch)
+            if (currentAttack != Attacks.None && currentAttack != Attacks.Pitch)
             {
                 whichAttack(PlayerAttacks.GetAttackName(currentAttack));
             }
