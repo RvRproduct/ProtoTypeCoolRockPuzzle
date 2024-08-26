@@ -822,24 +822,36 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -8490960181739413556, guid: f4db5fdba0628144ca01a4c9e6cf7ec5, type: 3}
+      propertyPath: squareGrid
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8490960181739413556, guid: f4db5fdba0628144ca01a4c9e6cf7ec5, type: 3}
       propertyPath: resetPitchFailed
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -8490960181739413556, guid: f4db5fdba0628144ca01a4c9e6cf7ec5, type: 3}
+      propertyPath: pitchLevels.Array.data[0].x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8490960181739413556, guid: f4db5fdba0628144ca01a4c9e6cf7ec5, type: 3}
+      propertyPath: pitchLevels.Array.data[0].y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8490960181739413556, guid: f4db5fdba0628144ca01a4c9e6cf7ec5, type: 3}
       propertyPath: pitchLevels.Array.data[1].x
-      value: 0.7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8490960181739413556, guid: f4db5fdba0628144ca01a4c9e6cf7ec5, type: 3}
       propertyPath: pitchLevels.Array.data[1].y
-      value: 0.7
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8490960181739413556, guid: f4db5fdba0628144ca01a4c9e6cf7ec5, type: 3}
       propertyPath: pitchLevels.Array.data[2].x
-      value: -0.7
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8490960181739413556, guid: f4db5fdba0628144ca01a4c9e6cf7ec5, type: 3}
       propertyPath: pitchLevels.Array.data[2].y
-      value: -0.7
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1819343042668974041, guid: f4db5fdba0628144ca01a4c9e6cf7ec5, type: 3}
       propertyPath: m_Name
