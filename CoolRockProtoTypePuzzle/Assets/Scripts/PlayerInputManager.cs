@@ -23,8 +23,8 @@ public class PlayerInputManager : MonoBehaviour
     public delegate void SpecialAttack();
     public static event SpecialAttack OnSpecialAttack;
 
-    public delegate void Pitching();
-    public static event Pitching OnPitching;
+    public delegate void Pitching(Vector2 value);
+    public static event Pitching OnChangePitch;
 
 
     //private int 
@@ -57,8 +57,8 @@ public class PlayerInputManager : MonoBehaviour
 
     private void OnPitchingInput(InputAction.CallbackContext context)
     {
-        //Debug.Log("Pitching");
-        OnPitching.Invoke();
+        Vector2 currentInput = context.ReadValue<Vector2>();
+        OnChangePitch.Invoke(currentInput);
     }
 
     private void OnSoloModeUpInput(InputAction.CallbackContext context)

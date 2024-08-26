@@ -48,9 +48,18 @@ public class PlayerState
         Debug.Log($"New Volume {playerVolume}");
     }
 
+    public void OnPitchChange(Vector2 updatePitchValue)
+    {
+        if (playerPitchMode)
+        {
+            playerPitch = updatePitchValue;
+        }
+        
+    }
+
     public void OnPlayerPitchActivate(bool activatePitch)
     {
-        playerPitchMode |= activatePitch;
+        playerPitchMode = activatePitch;
     }
 }
 

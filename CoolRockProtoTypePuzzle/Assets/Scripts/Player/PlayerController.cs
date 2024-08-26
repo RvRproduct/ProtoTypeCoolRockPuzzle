@@ -43,6 +43,7 @@ public class PlayerController : MonoBehaviour
         PlayerInputManager.OnPlayerInteract += OnPlayerInteract;
         PlayerInputManager.OnNormalAttack += OnNormalAttack;
         PlayerInputManager.OnSpecialAttack += OnSpecialAttack;
+        PlayerInputManager.OnChangePitch += OnPitchChange;
     }
 
     private void Update()
@@ -69,6 +70,11 @@ public class PlayerController : MonoBehaviour
     private void OnPlayerInteract(bool value)
     {
         isPlayerInteract = value;
+    }
+
+    private void OnPitchChange(Vector2 value)
+    {
+        playerState.OnPitchChange(value);
     }
 
     private void OnInstrumentChange(int value)

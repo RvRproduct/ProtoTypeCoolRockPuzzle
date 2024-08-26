@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class VocalPitching : MonoBehaviour
 {
-    private void OnTriggerEnter(Collider other)
+    private PlayerState playerState;
+
+    private void Awake()
     {
-        
+        playerState = GetComponentInParent<PlayerController>().PlayerState;
     }
 }

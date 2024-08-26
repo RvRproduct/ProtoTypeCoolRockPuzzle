@@ -87,9 +87,9 @@ public class DestructiblePitch : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (GetComponent<Collider>().gameObject.CompareTag("Volume1"))
+        if (GetComponent<Collider>().gameObject.CompareTag("Pitch"))
         {
-            Destroy(GetComponent<Collider>().gameObject);
+
         }
     }
 
