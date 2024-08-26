@@ -10,6 +10,7 @@ TagManager:
   - Volume3
   - Scream
   - None
+  - Pitch
   layers:
   - Default
   - TransparentFX

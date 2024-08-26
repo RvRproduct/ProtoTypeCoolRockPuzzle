@@ -5,7 +5,8 @@ using UnityEngine;
 public enum Attacks
 {
     None,
-    Scream
+    Scream,
+    Pitch
 }
 
 public static class PlayerAttacks
@@ -13,7 +14,8 @@ public static class PlayerAttacks
     public static readonly Dictionary<Attacks, string> AttackNames = new Dictionary<Attacks, string>()
     {
         { Attacks.None, "None"},
-        { Attacks.Scream, "Scream"}
+        { Attacks.Scream, "Scream"},
+        { Attacks.Pitch, "Pitch"}
     };
 
     public static string GetAttackName(Attacks attack)

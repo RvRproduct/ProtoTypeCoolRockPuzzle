@@ -49,7 +49,10 @@ public class PlayerController : MonoBehaviour
     {
         if (currentAttackCoolDown < maxAttackCoolDown)
         {
-            currentAttackCoolDown += Time.deltaTime;
+            if (playerState.PlayerPitchMode == false)
+            {
+                currentAttackCoolDown += Time.deltaTime;
+            }
 
             if (currentAttackCoolDown >= maxAttackCoolDown)
             {
@@ -106,6 +109,12 @@ public class PlayerController : MonoBehaviour
 
     private void OnSpecialAttack()
     {
+        if (playerState.PlayerPitchMode == true)
+        {
+            currentAttack = Attacks.Pitch;
+            OnPitching(PlayerAttacks.GetAttackName(currentAttack));
+        }
+
         if (currentAttackCoolDown >= maxAttackCoolDown)
         {
             currentAttackCoolDown = 0.0f;
@@ -126,6 +135,8 @@ public class PlayerController : MonoBehaviour
                     break;
                 case PlayerInstrumentType.Vocal:
                     Debug.Log("Vocal Special");
+                    currentAttack = Attacks.Pitch;
+                    OnPitching(PlayerAttacks.GetAttackName(currentAttack));
                     break;
             }
         }
@@ -165,6 +176,21 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void OnPitching(string attackName)
+    {
+        playerState.OnPlayerPitchActivate(!playerState.PlayerPitchMode);
+
+        foreach (Transform child in transform)
+        {
+            if (child.CompareTag(attackName))
+            {
+                child.gameObject.SetActive(playerState.PlayerPitchMode);
+                break;
+            }
+        }
+
+    }
+
     private void whichNormalAttack(string attackName)
     {
         foreach (Transform child in transform)
@@ -188,8 +214,6 @@ public class PlayerController : MonoBehaviour
                 break;
             }
         }
-
-
     }
 
     private void OnDisable()

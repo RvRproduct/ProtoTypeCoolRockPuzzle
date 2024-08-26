@@ -23,6 +23,9 @@ public class PlayerInputManager : MonoBehaviour
     public delegate void SpecialAttack();
     public static event SpecialAttack OnSpecialAttack;
 
+    public delegate void Pitching();
+    public static event Pitching OnPitching;
+
 
     //private int 
     private void Awake() 
@@ -55,6 +58,7 @@ public class PlayerInputManager : MonoBehaviour
     private void OnPitchingInput(InputAction.CallbackContext context)
     {
         //Debug.Log("Pitching");
+        OnPitching.Invoke();
     }
 
     private void OnSoloModeUpInput(InputAction.CallbackContext context)
@@ -86,13 +90,11 @@ public class PlayerInputManager : MonoBehaviour
 
     private void OnSpecialAttackInput(InputAction.CallbackContext context)
     {
-        //Debug.Log("Special Attack");
         OnSpecialAttack.Invoke();
     }
 
     private void OnNormalAttackInput(InputAction.CallbackContext context)
     {
-        //Debug.Log("Normal Attack");
         OnNormalAttack.Invoke();
     }
 

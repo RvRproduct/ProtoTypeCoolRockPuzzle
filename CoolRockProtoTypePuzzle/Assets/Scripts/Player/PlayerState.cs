@@ -10,12 +10,19 @@ public class PlayerState
     public PlayerInstrumentType CurrnetInstrument => currentInstrument;
     private int playerVolume;
     public int PlayerVolume => playerVolume;
+
+    private Vector2 playerPitch;
+    public Vector2 PlayerPitch => playerPitch; 
+    private bool playerPitchMode = false;
+    public bool PlayerPitchMode => playerPitchMode;
     //private int playerHealth;
     
     public void InitPlayerState()
     {
         currentInstrument = PlayerInstrumentType.Guitar;
         playerVolume = 2;
+        playerPitch = Vector2.zero;
+        playerPitchMode = false;
     }
 
     public void OnInstrumentChange(int valueToAdd)
@@ -39,6 +46,11 @@ public class PlayerState
         Debug.Log($"Previous Volume {playerVolume}");
         playerVolume = newVolume;
         Debug.Log($"New Volume {playerVolume}");
+    }
+
+    public void OnPlayerPitchActivate(bool activatePitch)
+    {
+        playerPitchMode |= activatePitch;
     }
 }
 
