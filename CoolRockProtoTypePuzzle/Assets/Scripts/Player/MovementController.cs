@@ -6,6 +6,7 @@ using Cinemachine;
 public class MovementController : MonoBehaviour
 {
     [SerializeField] float playerSpeed = 5f;
+    private PlayerState playerState;
     CharacterController characterController;
     CinemachineVirtualCamera virtualCamera;
 
@@ -21,6 +22,7 @@ public class MovementController : MonoBehaviour
         virtualCamera.Follow = transform;
         virtualCamera.LookAt = transform;
 
+        playerState = GetComponent<PlayerController>().PlayerState;
         PlayerInputManager.OnPlayerMovement += onMovementInput;
     }
 
@@ -66,9 +68,13 @@ public class MovementController : MonoBehaviour
 
     void Update()
     {
-        handleGravity();
-        handleRotation();
-        characterController.Move((currentMovement * playerSpeed) * Time.deltaTime);
+        if (!playerState.PlayerPhaseMode)
+        {
+            handleGravity();
+            handleRotation();
+            characterController.Move((currentMovement * playerSpeed) * Time.deltaTime);
+        }
+        
     }
     private void OnDisable()
     {
