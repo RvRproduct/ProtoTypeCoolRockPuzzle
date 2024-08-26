@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float maxAttackCoolDown = 0.5f;
     private float currentAttackCoolDown = 0.5f;
+    private CharacterController characterController;
     [HideInInspector] public Attacks currentAttack;
 
     [Header("SFX placeholder")]
@@ -30,11 +31,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private AudioSource audioSource;
 
+    public delegate void NormalAttack(Attacks attacks);
+    public static event NormalAttack OnChangeNPCBehavior;
+
     private void Awake()
     { 
         playerState = new PlayerState();
         playerState.InitPlayerState();
         OnInstrumentChange(0);
+        characterController = GetComponent<CharacterController>();
     }
 
     private void Start()
@@ -65,6 +70,14 @@ public class PlayerController : MonoBehaviour
                 currentAttackCoolDown = maxAttackCoolDown;
             }
         }
+    }
+
+    public void SetPosition(Vector3 newPosition)
+    {
+        if(characterController == null) { return; }
+        characterController.enabled = false;
+        transform.position = newPosition;
+        characterController.enabled = true;
     }
 
     private void OnPlayerInteract(bool value)
@@ -161,15 +174,20 @@ public class PlayerController : MonoBehaviour
             {
                 case PlayerInstrumentType.Guitar:
                     Debug.Log("Guitar Normal");
+                    OnChangeNPCBehavior.Invoke(Attacks.GuitarNormal);
+                    //invoke npcbehavior
                     break;
                 case PlayerInstrumentType.Drum:
                     Debug.Log("Drum Normal");
+                    OnChangeNPCBehavior.Invoke(Attacks.DrumNormal);
                     break;
                 case PlayerInstrumentType.Keyboard:
                     Debug.Log("KeyBoard Normal");
+                    OnChangeNPCBehavior.Invoke(Attacks.KeyboardNormal);
                     break;
                 case PlayerInstrumentType.Vocal:
                     Debug.Log("Vocal Normal");
+                    OnChangeNPCBehavior.Invoke(Attacks.Scream);
                     currentAttack = Attacks.Scream;
                     break;
             }

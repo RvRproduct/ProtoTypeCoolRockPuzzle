@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public abstract class Interactable : MonoBehaviour
@@ -16,16 +17,23 @@ public abstract class Interactable : MonoBehaviour
         if(sphereCollider != null)
         {
             sphereCollider.radius = interactRange;
+            sphereCollider.isTrigger = true;
+        }
+        else
+        {
+            sphereCollider = gameObject.AddComponent<SphereCollider>();
+            sphereCollider.radius = interactRange;
+            sphereCollider.isTrigger = true;
         }
     }
-    private void OnTriggerEnter(Collider other) 
+    protected virtual void OnTriggerEnter(Collider other) 
     {
         if(meshRenderer != null)
         {
             meshRenderer.material.SetColor("_Color", Color.yellow);
         }
     }
-    private void OnTriggerExit(Collider other) 
+    protected virtual void OnTriggerExit(Collider other) 
     {
         if(meshRenderer != null)
         {
@@ -33,7 +41,7 @@ public abstract class Interactable : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay(Collider other) 
+    protected virtual void OnTriggerStay(Collider other) 
     {
         if(other.TryGetComponent<PlayerController>(out PlayerController player))
         {
