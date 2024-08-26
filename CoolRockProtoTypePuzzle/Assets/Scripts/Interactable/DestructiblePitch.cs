@@ -38,7 +38,7 @@ public class DestructiblePitch : MonoBehaviour
     private Vector2 hitPitchThreshHold;
     private bool setHitPitchThreshHold = false;
 
-    [SerializeField] private float resetPitchFailed = 2.0f;
+    [SerializeField] private float resetPitchFailed = 3.0f;
     private float currentMissHitPitchTime = 0f;
 
     private bool closeEnough = false;
