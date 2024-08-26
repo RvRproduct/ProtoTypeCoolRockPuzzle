@@ -14,13 +14,18 @@ public class PianoPhase : MonoBehaviour
     private void Awake()
     {
         playerState = GetComponentInParent<PlayerController>().PlayerState;
-        parentTransform = GetComponentInParent<Transform>();
+        parentTransform = transform.parent;
         characterController = GetComponentInParent<CharacterController>();
     }
 
     private void OnEnable()
     {
         playerState.OnPlayerPhaseActivate(!playerState.PlayerPhaseMode);
+
+        if (parentTransform != null && LayerMask.NameToLayer("Phase") != -1)
+        {
+            parentTransform.gameObject.layer = LayerMask.NameToLayer("Phase");
+        }
 
         targetPosition = parentTransform.position + parentTransform.forward * positionChange;
 
@@ -71,6 +76,8 @@ public class PianoPhase : MonoBehaviour
     private void OnDisable()
     {
         playerState.OnPlayerPhaseActivate(!playerState.PlayerPhaseMode);
+        GetComponentInParent<Transform>().gameObject.layer = LayerMask.NameToLayer("Default");
+
         MeshRenderer playerMeshRenderer = GetComponentInParent<MeshRenderer>();
 
         if (playerMeshRenderer != null)
