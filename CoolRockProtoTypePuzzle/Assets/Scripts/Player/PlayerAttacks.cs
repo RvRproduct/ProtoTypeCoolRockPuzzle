@@ -5,6 +5,12 @@ using UnityEngine;
 public enum Attacks
 {
     None,
+    GuitarNormal,
+    GuitarSpecial,
+    DrumNormal,
+    DrumSpecial,
+    KeyboardNormal,
+    KeyboardSpecial,
     Scream,
     Pitch
 }
