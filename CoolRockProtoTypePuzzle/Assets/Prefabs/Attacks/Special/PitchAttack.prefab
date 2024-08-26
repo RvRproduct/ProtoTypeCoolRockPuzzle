@@ -229,8 +229,8 @@ GameObject:
   m_Component:
   - component: {fileID: 856001785602482006}
   - component: {fileID: 112180115712133557}
-  - component: {fileID: -7786540121772258106}
   - component: {fileID: 407521862730653041}
+  - component: {fileID: 7459808836299519069}
   m_Layer: 0
   m_Name: PitchAttack
   m_TagString: Pitch
@@ -277,23 +277,6 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 6
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-7786540121772258106
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9169380528420482048}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 870b4116319a31c4191590d6ea7c65cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pitchLevel1: {x: 1, y: 1}
-  pitchLevel2: {x: 1, y: 1}
-  pitchLevel3: {x: 1, y: 1}
-  mustHitPitchTime: 0.5
-  resetPitchFailed: 0.5
 --- !u!54 &407521862730653041
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -321,3 +304,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7459808836299519069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9169380528420482048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38c5caf3dd4390b4aa8cc892bc93d5d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

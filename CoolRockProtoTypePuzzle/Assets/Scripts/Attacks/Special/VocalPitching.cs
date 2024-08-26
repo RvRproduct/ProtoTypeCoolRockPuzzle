@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class VocalPitching : MonoBehaviour
 {
-    private PlayerState playerState;
+    [HideInInspector] public PlayerState playerState;
 
     private void Awake()
     {
