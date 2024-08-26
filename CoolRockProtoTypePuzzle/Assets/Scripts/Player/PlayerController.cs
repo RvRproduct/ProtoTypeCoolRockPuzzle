@@ -138,12 +138,18 @@ public class PlayerController : MonoBehaviour
                     break;
                 case PlayerInstrumentType.Keyboard:
                     Debug.Log("KeyBoard Special");
+                    currentAttack = Attacks.Phase;
                     break;
                 case PlayerInstrumentType.Vocal:
                     Debug.Log("Vocal Special");
                     currentAttack = Attacks.Pitch;
                     OnPitching(PlayerAttacks.GetAttackName(currentAttack));
                     break;
+            }
+
+            if (currentAttack != Attacks.None && currentAttack != Attacks.Pitch)
+            {
+                whichAttack(PlayerAttacks.GetAttackName(currentAttack));
             }
         }
     }
@@ -174,9 +180,9 @@ public class PlayerController : MonoBehaviour
                     break;
             }
 
-            if (currentAttack != Attacks.None)
+            if (currentAttack != Attacks.None || currentAttack != Attacks.Pitch)
             {
-                whichNormalAttack(PlayerAttacks.GetAttackName(currentAttack));
+                whichAttack(PlayerAttacks.GetAttackName(currentAttack));
             }
             
         }
@@ -197,7 +203,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private void whichNormalAttack(string attackName)
+    private void whichAttack(string attackName)
     {
         foreach (Transform child in transform)
         {

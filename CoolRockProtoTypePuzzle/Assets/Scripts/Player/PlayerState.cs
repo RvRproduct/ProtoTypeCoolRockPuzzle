@@ -15,6 +15,9 @@ public class PlayerState
     public Vector2 PlayerPitch => playerPitch; 
     private bool playerPitchMode = false;
     public bool PlayerPitchMode => playerPitchMode;
+
+    private bool playerPhaseMode = false;
+    public bool PlayerPhaseMode => playerPhaseMode;
     //private int playerHealth;
     
     public void InitPlayerState()
@@ -23,6 +26,7 @@ public class PlayerState
         playerVolume = 2;
         playerPitch = Vector2.zero;
         playerPitchMode = false;
+        playerPhaseMode = false;
     }
 
     public void OnInstrumentChange(int valueToAdd)
@@ -55,6 +59,11 @@ public class PlayerState
             playerPitch = updatePitchValue;
         }
         
+    }
+
+    public void OnPlayerPhaseActivate(bool activatePhase)
+    {
+        playerPhaseMode = activatePhase;
     }
 
     public void OnPlayerPitchActivate(bool activatePitch)

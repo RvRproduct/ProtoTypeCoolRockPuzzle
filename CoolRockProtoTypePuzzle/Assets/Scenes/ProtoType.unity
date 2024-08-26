@@ -615,6 +615,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4817744779692086967, guid: 86f7ef562f56a084386c080b90e6dd27, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4817744779692086967, guid: 86f7ef562f56a084386c080b90e6dd27, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2329d73feb839fe44ae0b060a47a2792, type: 2}
     - target: {fileID: 5035751895684766109, guid: 86f7ef562f56a084386c080b90e6dd27, type: 3}
       propertyPath: playerSpeed
       value: 5

@@ -6,7 +6,8 @@ public enum Attacks
 {
     None,
     Scream,
-    Pitch
+    Pitch,
+    Phase
 }
 
 public static class PlayerAttacks
@@ -15,7 +16,8 @@ public static class PlayerAttacks
     {
         { Attacks.None, "None"},
         { Attacks.Scream, "Scream"},
-        { Attacks.Pitch, "Pitch"}
+        { Attacks.Pitch, "Pitch"},
+        { Attacks.Phase, "Phase"}
     };
 
     public static string GetAttackName(Attacks attack)
