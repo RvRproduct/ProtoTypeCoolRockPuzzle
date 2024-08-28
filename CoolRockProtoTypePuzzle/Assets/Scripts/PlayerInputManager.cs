@@ -26,6 +26,9 @@ public class PlayerInputManager : MonoBehaviour
     public delegate void Pitching(Vector2 value);
     public static event Pitching OnChangePitch;
 
+    public delegate void Solo(SoloPatterns soloPattern);
+    public static event Solo OnSoloPress;
+
 
     //private int 
     private void Awake() 
@@ -58,58 +61,62 @@ public class PlayerInputManager : MonoBehaviour
     private void OnPitchingInput(InputAction.CallbackContext context)
     {
         Vector2 currentInput = context.ReadValue<Vector2>();
-        OnChangePitch.Invoke(currentInput);
+        OnChangePitch?.Invoke(currentInput);
     }
 
     private void OnSoloModeUpInput(InputAction.CallbackContext context)
     {
-        Debug.Log("Solo Up");
+        //Debug.Log("Solo Up");
+        OnSoloPress?.Invoke(SoloPatterns.up);
     }
 
     private void OnSoloModeLeftInput(InputAction.CallbackContext context)
     {
-        Debug.Log("Solo Left");
+        //Debug.Log("Solo Left");
+        OnSoloPress?.Invoke(SoloPatterns.left);
     }
 
     private void OnSoloModeRightInput(InputAction.CallbackContext context)
     {
-        Debug.Log("Solo Right");
+        //Debug.Log("Solo Right");
+        OnSoloPress?.Invoke(SoloPatterns.right);
     }
 
     private void OnSoloModeDownInput(InputAction.CallbackContext context)
     {
-        Debug.Log("Solo Down");
+        //Debug.Log("Solo Down");
+        OnSoloPress?.Invoke(SoloPatterns.down);
     }
 
     private void OnInteractInput(InputAction.CallbackContext context)
     {
         bool currentInput = context.ReadValue<float>() > 0.1f ? true : false;
         //Debug.Log("Interact: " + currentInput);
-        OnPlayerInteract.Invoke(currentInput);
+        OnPlayerInteract?.Invoke(currentInput);
     }
 
     private void OnSpecialAttackInput(InputAction.CallbackContext context)
     {
-        OnSpecialAttack.Invoke();
+        OnSpecialAttack?.Invoke();
     }
 
     private void OnNormalAttackInput(InputAction.CallbackContext context)
     {
-        OnNormalAttack.Invoke();
+        OnNormalAttack?.Invoke();
     }
 
     private void OnInstrumentInput(InputAction.CallbackContext context)
     {
         float currentInput = context.ReadValue<float>();
-        Debug.Log("InstrumentChange, + " + currentInput);
-        OnChangeInstrument.Invoke((int)currentInput);
+        //Debug.Log("InstrumentChange, + " + currentInput);
+        OnChangeInstrument?.Invoke((int)currentInput);
     }
 
     private void onMovementInput(InputAction.CallbackContext context)
     {
         //Debug.Log("MOVE");
         Vector2 currentInput = context.ReadValue<Vector2>();
-        OnPlayerMovement.Invoke(currentInput);
+        OnPlayerMovement?.Invoke(currentInput);
     }
 
     private void OnEnable()

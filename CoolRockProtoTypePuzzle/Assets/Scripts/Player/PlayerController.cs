@@ -100,21 +100,21 @@ public class PlayerController : MonoBehaviour
             case PlayerInstrumentType.Guitar:   
                 SetPlayerColor(Color.red);
                 audioSource.clip = guitar;
-                Debug.Log("Guitar");
+                //Debug.Log("Guitar");
                 break;
             case PlayerInstrumentType.Drum:
                 SetPlayerColor(Color.green);
-                Debug.Log("Drum");
+                //Debug.Log("Drum");
                 audioSource.clip = drum;
                 break;
             case PlayerInstrumentType.Keyboard:
                 SetPlayerColor(Color.blue);
-                Debug.Log("KeyBoard");
+                //Debug.Log("KeyBoard");
                 audioSource.clip = keyboard;
                 break;
             case PlayerInstrumentType.Vocal:
                 SetPlayerColor(Color.gray);
-                Debug.Log("Vocal");
+                //Debug.Log("Vocal");
                 audioSource.clip = vocal;
                 break;
         }
@@ -179,21 +179,21 @@ public class PlayerController : MonoBehaviour
             switch (playerState.CurrnetInstrument)
             {
                 case PlayerInstrumentType.Guitar:
-                    Debug.Log("Guitar Normal");
-                    OnChangeNPCBehavior.Invoke(Attacks.GuitarNormal);
+                    //Debug.Log("Guitar Normal");
+                    OnChangeNPCBehavior?.Invoke(Attacks.GuitarNormal);
                     //invoke npcbehavior
                     break;
                 case PlayerInstrumentType.Drum:
-                    Debug.Log("Drum Normal");
-                    OnChangeNPCBehavior.Invoke(Attacks.DrumNormal);
+                    //Debug.Log("Drum Normal");
+                    OnChangeNPCBehavior?.Invoke(Attacks.DrumNormal);
                     break;
                 case PlayerInstrumentType.Keyboard:
-                    Debug.Log("KeyBoard Normal");
-                    OnChangeNPCBehavior.Invoke(Attacks.KeyboardNormal);
+                    //Debug.Log("KeyBoard Normal");
+                    OnChangeNPCBehavior?.Invoke(Attacks.KeyboardNormal);
                     break;
                 case PlayerInstrumentType.Vocal:
-                    Debug.Log("Vocal Normal");
-                    OnChangeNPCBehavior.Invoke(Attacks.Scream);
+                    //Debug.Log("Vocal Normal");
+                    OnChangeNPCBehavior?.Invoke(Attacks.Scream);
                     currentAttack = Attacks.Scream;
                     break;
             }
