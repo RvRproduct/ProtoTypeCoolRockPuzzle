@@ -26,6 +26,9 @@ public class PlayerInputManager : MonoBehaviour
     public delegate void Pitching(Vector2 value);
     public static event Pitching OnChangePitch;
 
+    public delegate void Solo(SoloPatterns soloPattern);
+    public static event Solo OnSoloPress;
+
 
     //private int 
     private void Awake() 
@@ -63,22 +66,26 @@ public class PlayerInputManager : MonoBehaviour
 
     private void OnSoloModeUpInput(InputAction.CallbackContext context)
     {
-        Debug.Log("Solo Up");
+        //Debug.Log("Solo Up");
+        OnSoloPress.Invoke(SoloPatterns.up);
     }
 
     private void OnSoloModeLeftInput(InputAction.CallbackContext context)
     {
-        Debug.Log("Solo Left");
+        //Debug.Log("Solo Left");
+        OnSoloPress.Invoke(SoloPatterns.left);
     }
 
     private void OnSoloModeRightInput(InputAction.CallbackContext context)
     {
-        Debug.Log("Solo Right");
+        //Debug.Log("Solo Right");
+        OnSoloPress.Invoke(SoloPatterns.right);
     }
 
     private void OnSoloModeDownInput(InputAction.CallbackContext context)
     {
-        Debug.Log("Solo Down");
+        //Debug.Log("Solo Down");
+        OnSoloPress.Invoke(SoloPatterns.down);
     }
 
     private void OnInteractInput(InputAction.CallbackContext context)
