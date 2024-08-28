@@ -76,7 +76,7 @@ public class PianoPhase : MonoBehaviour
     private void OnDisable()
     {
         playerState.OnPlayerPhaseActivate(!playerState.PlayerPhaseMode);
-        GetComponentInParent<Transform>().gameObject.layer = LayerMask.NameToLayer("Default");
+        GetComponentInParent<Transform>().gameObject.layer = LayerMask.NameToLayer("Player");
 
         MeshRenderer playerMeshRenderer = GetComponentInParent<MeshRenderer>();
 

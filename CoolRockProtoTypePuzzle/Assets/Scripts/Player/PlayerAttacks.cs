@@ -13,7 +13,8 @@ public enum Attacks
     KeyboardSpecial,
     Scream,
     Pitch,
-    Phase
+    Phase,
+    Laser
 }
 
 public static class PlayerAttacks
@@ -23,7 +24,8 @@ public static class PlayerAttacks
         { Attacks.None, "None"},
         { Attacks.Scream, "Scream"},
         { Attacks.Pitch, "Pitch"},
-        { Attacks.Phase, "Phase"}
+        { Attacks.Phase, "Phase"},
+        { Attacks.Laser, "Laser" }
     };
 
     public static string GetAttackName(Attacks attack)
