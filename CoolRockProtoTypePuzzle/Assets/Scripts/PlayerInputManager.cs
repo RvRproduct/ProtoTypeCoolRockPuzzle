@@ -108,7 +108,7 @@ public class PlayerInputManager : MonoBehaviour
     private void OnInstrumentInput(InputAction.CallbackContext context)
     {
         float currentInput = context.ReadValue<float>();
-        Debug.Log("InstrumentChange, + " + currentInput);
+        //Debug.Log("InstrumentChange, + " + currentInput);
         OnChangeInstrument?.Invoke((int)currentInput);
     }
 

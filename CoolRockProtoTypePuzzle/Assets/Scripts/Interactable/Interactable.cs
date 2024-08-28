@@ -10,6 +10,7 @@ public abstract class Interactable : MonoBehaviour
     [HideInInspector] public static GameObject playerObject;
     [SerializeField]
     private float interactRange = 3;
+    protected PlayerController player;
     private void Awake() 
     {
         meshRenderer = GetComponent<MeshRenderer>();
@@ -39,18 +40,28 @@ public abstract class Interactable : MonoBehaviour
         {
             meshRenderer.material.SetColor("_Color", Color.white);
         }
+        this.player = null;
     }
 
     protected virtual void OnTriggerStay(Collider other) 
     {
         if(other.TryGetComponent<PlayerController>(out PlayerController player))
         {
+            this.player = player;
             if(player.IsPlayerInteract)
             {
                 playerObject = other.gameObject;
                 Interact();
                 player.ResetInteract();
             }
+        }
+    }
+
+    protected virtual void SetColor(Color newColor)
+    {
+        if(meshRenderer != null)
+        {
+            meshRenderer.material.SetColor("_Color", newColor);
         }
     }
     protected virtual void Interact(){ }
