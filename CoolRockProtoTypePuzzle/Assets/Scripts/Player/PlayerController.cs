@@ -145,6 +145,7 @@ public class PlayerController : MonoBehaviour
             {
                 case PlayerInstrumentType.Guitar:
                     Debug.Log("Guitar Special");
+                    currentAttack = Attacks.Laser;
                     break;
                 case PlayerInstrumentType.Drum:
                     Debug.Log("Drum Special");
