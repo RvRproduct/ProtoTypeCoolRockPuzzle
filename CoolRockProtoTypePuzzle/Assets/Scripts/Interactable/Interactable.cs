@@ -5,7 +5,7 @@ using UnityEngine;
 
 public abstract class Interactable : MonoBehaviour
 {
-    private MeshRenderer meshRenderer;
+    protected MeshRenderer meshRenderer;
     private SphereCollider sphereCollider;
     [HideInInspector] public static GameObject playerObject;
     [SerializeField]
