@@ -13,8 +13,12 @@ public class InteractableNpcB : InteractableNpc
     protected override void DoDrumNormalBehavior()
     {
         //teleport
-        currentPlayer.SetPosition(teleportTarget.position);
-        currentAttackBehaviour = Attacks.None; 
+        if(currentPlayer != null)
+        {
+            currentPlayer.SetPosition(teleportTarget.position);
+            currentAttackBehaviour = Attacks.None; 
+            currentPlayer = null;
+        }
     }
     protected override void DoKeyboardNormalBehavior()
     {
