@@ -180,20 +180,20 @@ public class PlayerController : MonoBehaviour
             {
                 case PlayerInstrumentType.Guitar:
                     Debug.Log("Guitar Normal");
-                    OnChangeNPCBehavior.Invoke(Attacks.GuitarNormal);
+                    OnChangeNPCBehavior?.Invoke(Attacks.GuitarNormal);
                     //invoke npcbehavior
                     break;
                 case PlayerInstrumentType.Drum:
                     Debug.Log("Drum Normal");
-                    OnChangeNPCBehavior.Invoke(Attacks.DrumNormal);
+                    OnChangeNPCBehavior?.Invoke(Attacks.DrumNormal);
                     break;
                 case PlayerInstrumentType.Keyboard:
                     Debug.Log("KeyBoard Normal");
-                    OnChangeNPCBehavior.Invoke(Attacks.KeyboardNormal);
+                    OnChangeNPCBehavior?.Invoke(Attacks.KeyboardNormal);
                     break;
                 case PlayerInstrumentType.Vocal:
                     Debug.Log("Vocal Normal");
-                    OnChangeNPCBehavior.Invoke(Attacks.Scream);
+                    OnChangeNPCBehavior?.Invoke(Attacks.Scream);
                     currentAttack = Attacks.Scream;
                     break;
             }
