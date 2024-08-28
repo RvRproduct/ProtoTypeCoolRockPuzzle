@@ -34,7 +34,7 @@ public class InteractableSoloPuzzle : Interactable
             }
 
             //start next solo
-            StopCoroutine(soloCoroutine);
+            if(soloCoroutine != null) { StopCoroutine(soloCoroutine); }
             soloCoroutine = StartCoroutine(Solo());
         }
         else
