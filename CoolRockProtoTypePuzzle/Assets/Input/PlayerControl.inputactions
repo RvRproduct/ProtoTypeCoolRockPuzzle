@@ -60,7 +60,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "SoloModeUp",
+                    "name": "Keyboard",
                     "type": "Button",
                     "id": "9779034e-5247-449e-804e-2e5b5994d69e",
                     "expectedControlType": "Button",
@@ -69,7 +69,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "SoloModeDown",
+                    "name": "Guitar",
                     "type": "Button",
                     "id": "91fb1a4b-f6f8-4cb4-a91e-be4f5c5fbbfe",
                     "expectedControlType": "Button",
@@ -78,7 +78,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "SoloModeRight",
+                    "name": "Vocal",
                     "type": "Button",
                     "id": "51ea13cc-c5ec-49fb-9a33-56f6dd7e6e65",
                     "expectedControlType": "Button",
@@ -87,7 +87,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "SoloModeLeft",
+                    "name": "Drum",
                     "type": "Button",
                     "id": "2b59e2a7-b190-4b86-9182-22dde209e9a0",
                     "expectedControlType": "Button",
@@ -302,7 +302,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "SoloModeUp",
+                    "action": "Keyboard",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -313,7 +313,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "SoloModeUp",
+                    "action": "Keyboard",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -324,7 +324,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "SoloModeDown",
+                    "action": "Guitar",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -335,7 +335,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "SoloModeDown",
+                    "action": "Guitar",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -346,7 +346,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "SoloModeRight",
+                    "action": "Vocal",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -357,7 +357,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "SoloModeRight",
+                    "action": "Vocal",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -368,7 +368,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "SoloModeLeft",
+                    "action": "Drum",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -379,7 +379,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "SoloModeLeft",
+                    "action": "Drum",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

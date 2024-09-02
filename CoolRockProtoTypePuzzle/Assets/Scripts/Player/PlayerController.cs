@@ -90,10 +90,9 @@ public class PlayerController : MonoBehaviour
         playerState.OnPitchChange(value);
     }
 
-    private void OnInstrumentChange(int value)
+    private void OnInstrumentChange(PlayerInstrumentType playerInstrumentType)
     {
-        playerState.OnInstrumentChange(value);
-
+        playerState.OnInstrumentChange(playerInstrumentType);
         
         switch(playerState.CurrnetInstrument)
         {

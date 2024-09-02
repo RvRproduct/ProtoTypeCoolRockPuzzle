@@ -17,7 +17,7 @@ public class InteractableSoloPuzzle : Interactable
     private void Start() 
     {
         GenerateRandomSoloPuzzle();
-        PlayerInputManager.OnSoloPress += OnSoloPress;
+        //PlayerInputManager.OnSoloPress += OnSoloPress;
     }
 
     private void OnSoloPress(SoloPatterns soloPattern)
@@ -96,7 +96,7 @@ public class InteractableSoloPuzzle : Interactable
 
     private void OnDisable() 
     {
-        PlayerInputManager.OnSoloPress -= OnSoloPress;
+        //PlayerInputManager.OnSoloPress -= OnSoloPress;
     }
 
 

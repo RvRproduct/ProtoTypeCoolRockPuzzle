@@ -33,20 +33,21 @@ public class PlayerState
         playerShootMode = false;
     }
 
-    public void OnInstrumentChange(int valueToAdd)
+    public void OnInstrumentChange(PlayerInstrumentType playerInstrumentType)
     {
-        int length = Enum.GetNames(typeof(PlayerInstrumentType)).Length;
-        int currentValue = (int)currentInstrument;
-        currentValue += valueToAdd;
-        if(currentValue == length)
-        {
-            currentValue = 0;
-        }
-        else if(currentValue < 0)
-        {
-            currentValue = length - 1;
-        }
-        currentInstrument = (PlayerInstrumentType)currentValue;
+        currentInstrument = playerInstrumentType;
+        // int length = Enum.GetNames(typeof(PlayerInstrumentType)).Length;
+        // int currentValue = (int)currentInstrument;
+        // currentValue += valueToAdd;
+        // if(currentValue == length)
+        // {
+        //     currentValue = 0;
+        // }
+        // else if(currentValue < 0)
+        // {
+        //     currentValue = length - 1;
+        // }
+        // currentInstrument = (PlayerInstrumentType)currentValue;
     }
 
     public void OnPlayerVolumeChange(int newVolume)

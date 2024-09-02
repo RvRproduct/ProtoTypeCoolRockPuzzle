@@ -8,7 +8,7 @@ public class PlayerInputManager : MonoBehaviour
 {
     PlayerControl playerControl;
 
-    public delegate void ChangeInstrument(int value);
+    public delegate void ChangeInstrument(PlayerInstrumentType instrumentType);
     public static event ChangeInstrument OnChangeInstrument;
 
     public delegate void PlayerMovement(Vector2 value);
@@ -26,8 +26,8 @@ public class PlayerInputManager : MonoBehaviour
     public delegate void Pitching(Vector2 value);
     public static event Pitching OnChangePitch;
 
-    public delegate void Solo(SoloPatterns soloPattern);
-    public static event Solo OnSoloPress;
+    // public delegate void Solo(SoloPatterns soloPattern);
+    // public static event Solo OnSoloPress;
 
 
     //private int 
@@ -40,7 +40,7 @@ public class PlayerInputManager : MonoBehaviour
         playerControl.CharacterControl.Move.canceled += onMovementInput;
         playerControl.CharacterControl.Move.performed += onMovementInput;
 
-        playerControl.CharacterControl.ChangeInstrument.started += OnInstrumentInput;
+        //playerControl.CharacterControl.ChangeInstrument.started += OnInstrumentInput;
 
         playerControl.CharacterControl.NormalAttack.started += OnNormalAttackInput;
         playerControl.CharacterControl.SpecialAttack.started += OnSpecialAttackInput;
@@ -48,10 +48,10 @@ public class PlayerInputManager : MonoBehaviour
         playerControl.CharacterControl.Interact.started += OnInteractInput;
         playerControl.CharacterControl.Interact.canceled += OnInteractInput;
 
-        playerControl.CharacterControl.SoloModeDown.started += OnSoloModeDownInput;
-        playerControl.CharacterControl.SoloModeRight.started += OnSoloModeRightInput;
-        playerControl.CharacterControl.SoloModeLeft.started += OnSoloModeLeftInput;
-        playerControl.CharacterControl.SoloModeUp.started += OnSoloModeUpInput;
+        playerControl.CharacterControl.Guitar.started += OnGuitarChangeInput;
+        playerControl.CharacterControl.Vocal.started += OnVocalChangeInput;
+        playerControl.CharacterControl.Drum.started += OnDrumChangeInput;
+        playerControl.CharacterControl.Keyboard.started += OnKeyboardChangeInput;
 
         playerControl.CharacterControl.Pitching.started += OnPitchingInput;
         playerControl.CharacterControl.Pitching.canceled += OnPitchingInput;
@@ -64,28 +64,32 @@ public class PlayerInputManager : MonoBehaviour
         OnChangePitch?.Invoke(currentInput);
     }
 
-    private void OnSoloModeUpInput(InputAction.CallbackContext context)
+    private void OnKeyboardChangeInput(InputAction.CallbackContext context)
     {
         //Debug.Log("Solo Up");
-        OnSoloPress?.Invoke(SoloPatterns.up);
+        //OnSoloPress?.Invoke(SoloPatterns.up);
+        OnChangeInstrument?.Invoke(PlayerInstrumentType.Keyboard);
     }
 
-    private void OnSoloModeLeftInput(InputAction.CallbackContext context)
+    private void OnDrumChangeInput(InputAction.CallbackContext context)
     {
         //Debug.Log("Solo Left");
-        OnSoloPress?.Invoke(SoloPatterns.left);
+        //OnSoloPress?.Invoke(SoloPatterns.left);
+        OnChangeInstrument?.Invoke(PlayerInstrumentType.Drum);
     }
 
-    private void OnSoloModeRightInput(InputAction.CallbackContext context)
+    private void OnVocalChangeInput(InputAction.CallbackContext context)
     {
         //Debug.Log("Solo Right");
-        OnSoloPress?.Invoke(SoloPatterns.right);
+        //OnSoloPress?.Invoke(SoloPatterns.right);
+        OnChangeInstrument?.Invoke(PlayerInstrumentType.Vocal);
     }
 
-    private void OnSoloModeDownInput(InputAction.CallbackContext context)
+    private void OnGuitarChangeInput(InputAction.CallbackContext context)
     {
         //Debug.Log("Solo Down");
-        OnSoloPress?.Invoke(SoloPatterns.down);
+        //OnSoloPress?.Invoke(SoloPatterns.down);
+        OnChangeInstrument?.Invoke(PlayerInstrumentType.Guitar);
     }
 
     private void OnInteractInput(InputAction.CallbackContext context)
@@ -105,12 +109,12 @@ public class PlayerInputManager : MonoBehaviour
         OnNormalAttack?.Invoke();
     }
 
-    private void OnInstrumentInput(InputAction.CallbackContext context)
-    {
-        float currentInput = context.ReadValue<float>();
-        //Debug.Log("InstrumentChange, + " + currentInput);
-        OnChangeInstrument?.Invoke((int)currentInput);
-    }
+    // private void OnInstrumentInput(InputAction.CallbackContext context)
+    // {
+    //     float currentInput = context.ReadValue<float>();
+    //     //Debug.Log("InstrumentChange, + " + currentInput);
+    //     OnChangeInstrument?.Invoke((int)currentInput);
+    // }
 
     private void onMovementInput(InputAction.CallbackContext context)
     {
