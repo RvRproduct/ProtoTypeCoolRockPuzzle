@@ -82,7 +82,7 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""SoloModeUp"",
+                    ""name"": ""Keyboard"",
                     ""type"": ""Button"",
                     ""id"": ""9779034e-5247-449e-804e-2e5b5994d69e"",
                     ""expectedControlType"": ""Button"",
@@ -91,7 +91,7 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""SoloModeDown"",
+                    ""name"": ""Guitar"",
                     ""type"": ""Button"",
                     ""id"": ""91fb1a4b-f6f8-4cb4-a91e-be4f5c5fbbfe"",
                     ""expectedControlType"": ""Button"",
@@ -100,7 +100,7 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""SoloModeRight"",
+                    ""name"": ""Vocal"",
                     ""type"": ""Button"",
                     ""id"": ""51ea13cc-c5ec-49fb-9a33-56f6dd7e6e65"",
                     ""expectedControlType"": ""Button"",
@@ -109,7 +109,7 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""SoloModeLeft"",
+                    ""name"": ""Drum"",
                     ""type"": ""Button"",
                     ""id"": ""2b59e2a7-b190-4b86-9182-22dde209e9a0"",
                     ""expectedControlType"": ""Button"",
@@ -324,7 +324,7 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""SoloModeUp"",
+                    ""action"": ""Keyboard"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -335,7 +335,7 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""SoloModeUp"",
+                    ""action"": ""Keyboard"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -346,7 +346,7 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""SoloModeDown"",
+                    ""action"": ""Guitar"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -357,7 +357,7 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""SoloModeDown"",
+                    ""action"": ""Guitar"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -368,7 +368,7 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""SoloModeRight"",
+                    ""action"": ""Vocal"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -379,7 +379,7 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""SoloModeRight"",
+                    ""action"": ""Vocal"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -390,7 +390,7 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""SoloModeLeft"",
+                    ""action"": ""Drum"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -401,7 +401,7 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""SoloModeLeft"",
+                    ""action"": ""Drum"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -484,10 +484,10 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
         m_CharacterControl_NormalAttack = m_CharacterControl.FindAction("NormalAttack", throwIfNotFound: true);
         m_CharacterControl_SpecialAttack = m_CharacterControl.FindAction("SpecialAttack", throwIfNotFound: true);
         m_CharacterControl_Interact = m_CharacterControl.FindAction("Interact", throwIfNotFound: true);
-        m_CharacterControl_SoloModeUp = m_CharacterControl.FindAction("SoloModeUp", throwIfNotFound: true);
-        m_CharacterControl_SoloModeDown = m_CharacterControl.FindAction("SoloModeDown", throwIfNotFound: true);
-        m_CharacterControl_SoloModeRight = m_CharacterControl.FindAction("SoloModeRight", throwIfNotFound: true);
-        m_CharacterControl_SoloModeLeft = m_CharacterControl.FindAction("SoloModeLeft", throwIfNotFound: true);
+        m_CharacterControl_Keyboard = m_CharacterControl.FindAction("Keyboard", throwIfNotFound: true);
+        m_CharacterControl_Guitar = m_CharacterControl.FindAction("Guitar", throwIfNotFound: true);
+        m_CharacterControl_Vocal = m_CharacterControl.FindAction("Vocal", throwIfNotFound: true);
+        m_CharacterControl_Drum = m_CharacterControl.FindAction("Drum", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -555,10 +555,10 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
     private readonly InputAction m_CharacterControl_NormalAttack;
     private readonly InputAction m_CharacterControl_SpecialAttack;
     private readonly InputAction m_CharacterControl_Interact;
-    private readonly InputAction m_CharacterControl_SoloModeUp;
-    private readonly InputAction m_CharacterControl_SoloModeDown;
-    private readonly InputAction m_CharacterControl_SoloModeRight;
-    private readonly InputAction m_CharacterControl_SoloModeLeft;
+    private readonly InputAction m_CharacterControl_Keyboard;
+    private readonly InputAction m_CharacterControl_Guitar;
+    private readonly InputAction m_CharacterControl_Vocal;
+    private readonly InputAction m_CharacterControl_Drum;
     public struct CharacterControlActions
     {
         private @PlayerControl m_Wrapper;
@@ -569,10 +569,10 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
         public InputAction @NormalAttack => m_Wrapper.m_CharacterControl_NormalAttack;
         public InputAction @SpecialAttack => m_Wrapper.m_CharacterControl_SpecialAttack;
         public InputAction @Interact => m_Wrapper.m_CharacterControl_Interact;
-        public InputAction @SoloModeUp => m_Wrapper.m_CharacterControl_SoloModeUp;
-        public InputAction @SoloModeDown => m_Wrapper.m_CharacterControl_SoloModeDown;
-        public InputAction @SoloModeRight => m_Wrapper.m_CharacterControl_SoloModeRight;
-        public InputAction @SoloModeLeft => m_Wrapper.m_CharacterControl_SoloModeLeft;
+        public InputAction @Keyboard => m_Wrapper.m_CharacterControl_Keyboard;
+        public InputAction @Guitar => m_Wrapper.m_CharacterControl_Guitar;
+        public InputAction @Vocal => m_Wrapper.m_CharacterControl_Vocal;
+        public InputAction @Drum => m_Wrapper.m_CharacterControl_Drum;
         public InputActionMap Get() { return m_Wrapper.m_CharacterControl; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -600,18 +600,18 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
             @Interact.started += instance.OnInteract;
             @Interact.performed += instance.OnInteract;
             @Interact.canceled += instance.OnInteract;
-            @SoloModeUp.started += instance.OnSoloModeUp;
-            @SoloModeUp.performed += instance.OnSoloModeUp;
-            @SoloModeUp.canceled += instance.OnSoloModeUp;
-            @SoloModeDown.started += instance.OnSoloModeDown;
-            @SoloModeDown.performed += instance.OnSoloModeDown;
-            @SoloModeDown.canceled += instance.OnSoloModeDown;
-            @SoloModeRight.started += instance.OnSoloModeRight;
-            @SoloModeRight.performed += instance.OnSoloModeRight;
-            @SoloModeRight.canceled += instance.OnSoloModeRight;
-            @SoloModeLeft.started += instance.OnSoloModeLeft;
-            @SoloModeLeft.performed += instance.OnSoloModeLeft;
-            @SoloModeLeft.canceled += instance.OnSoloModeLeft;
+            @Keyboard.started += instance.OnKeyboard;
+            @Keyboard.performed += instance.OnKeyboard;
+            @Keyboard.canceled += instance.OnKeyboard;
+            @Guitar.started += instance.OnGuitar;
+            @Guitar.performed += instance.OnGuitar;
+            @Guitar.canceled += instance.OnGuitar;
+            @Vocal.started += instance.OnVocal;
+            @Vocal.performed += instance.OnVocal;
+            @Vocal.canceled += instance.OnVocal;
+            @Drum.started += instance.OnDrum;
+            @Drum.performed += instance.OnDrum;
+            @Drum.canceled += instance.OnDrum;
         }
 
         private void UnregisterCallbacks(ICharacterControlActions instance)
@@ -634,18 +634,18 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
             @Interact.started -= instance.OnInteract;
             @Interact.performed -= instance.OnInteract;
             @Interact.canceled -= instance.OnInteract;
-            @SoloModeUp.started -= instance.OnSoloModeUp;
-            @SoloModeUp.performed -= instance.OnSoloModeUp;
-            @SoloModeUp.canceled -= instance.OnSoloModeUp;
-            @SoloModeDown.started -= instance.OnSoloModeDown;
-            @SoloModeDown.performed -= instance.OnSoloModeDown;
-            @SoloModeDown.canceled -= instance.OnSoloModeDown;
-            @SoloModeRight.started -= instance.OnSoloModeRight;
-            @SoloModeRight.performed -= instance.OnSoloModeRight;
-            @SoloModeRight.canceled -= instance.OnSoloModeRight;
-            @SoloModeLeft.started -= instance.OnSoloModeLeft;
-            @SoloModeLeft.performed -= instance.OnSoloModeLeft;
-            @SoloModeLeft.canceled -= instance.OnSoloModeLeft;
+            @Keyboard.started -= instance.OnKeyboard;
+            @Keyboard.performed -= instance.OnKeyboard;
+            @Keyboard.canceled -= instance.OnKeyboard;
+            @Guitar.started -= instance.OnGuitar;
+            @Guitar.performed -= instance.OnGuitar;
+            @Guitar.canceled -= instance.OnGuitar;
+            @Vocal.started -= instance.OnVocal;
+            @Vocal.performed -= instance.OnVocal;
+            @Vocal.canceled -= instance.OnVocal;
+            @Drum.started -= instance.OnDrum;
+            @Drum.performed -= instance.OnDrum;
+            @Drum.canceled -= instance.OnDrum;
         }
 
         public void RemoveCallbacks(ICharacterControlActions instance)
@@ -671,9 +671,9 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
         void OnNormalAttack(InputAction.CallbackContext context);
         void OnSpecialAttack(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
-        void OnSoloModeUp(InputAction.CallbackContext context);
-        void OnSoloModeDown(InputAction.CallbackContext context);
-        void OnSoloModeRight(InputAction.CallbackContext context);
-        void OnSoloModeLeft(InputAction.CallbackContext context);
+        void OnKeyboard(InputAction.CallbackContext context);
+        void OnGuitar(InputAction.CallbackContext context);
+        void OnVocal(InputAction.CallbackContext context);
+        void OnDrum(InputAction.CallbackContext context);
     }
 }
