@@ -7,6 +7,9 @@ using System;
 public class MovementController : MonoBehaviour
 {
     [SerializeField] float playerSpeed = 5f;
+    [SerializeField] private float phasePositionChange = 15;
+    [SerializeField] private float phaseSpeed = 20;
+
     private PlayerState playerState;
     CharacterController characterController;
     CinemachineVirtualCamera virtualCamera;
@@ -31,6 +34,96 @@ public class MovementController : MonoBehaviour
     {
         PlayerInputManager.OnPlayerMovement += onMovementInput;
         PlayerInputManager.OnAiming += OnAiming;
+        PlayerInputManager.OnPhase += OnPhase;
+    }
+
+    private void OnPhase()
+    {
+        playerState.OnPlayerPhaseActivate(!playerState.PlayerPhaseMode);
+
+        transform.gameObject.layer = LayerMask.NameToLayer("Phase");
+        
+
+        Vector3 targetPosition = transform.position + transform.forward * phasePositionChange;
+
+        MeshRenderer playerMeshRenderer = GetComponent<MeshRenderer>();
+
+        if (playerMeshRenderer != null)
+        {
+            EnableTransparency(playerMeshRenderer.material);
+
+            Color transparentBlue = Color.blue;
+            transparentBlue.a = 0.5f;
+            playerMeshRenderer.material.color = transparentBlue;
+        }
+
+        float distance = Vector3.Distance(transform.position, targetPosition);
+        float lerpDuration = distance / phaseSpeed;
+
+        StartCoroutine(LerpPostion(targetPosition, lerpDuration));
+    }
+
+    private IEnumerator LerpPostion(Vector3 _targetPosition, float lerpTime)
+    {
+        float timeElapsed = 0f;
+        Vector3 startPosition = transform.position;
+
+        while (timeElapsed < lerpTime)
+        {
+            Vector3 newPosition = Vector3.Lerp(startPosition, _targetPosition, timeElapsed / lerpTime);
+            Vector3 moveDirection = newPosition - transform.position;
+
+            characterController.Move(moveDirection);
+
+            timeElapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        Vector3 finalMoveDirection = _targetPosition - transform.position;
+        characterController.Move(finalMoveDirection);
+
+        OnLerpComplete();
+    }
+
+    private void OnLerpComplete()
+    {
+        playerState.OnPlayerPhaseActivate(!playerState.PlayerPhaseMode);
+        gameObject.layer = LayerMask.NameToLayer("Player");
+
+        MeshRenderer playerMeshRenderer = GetComponentInParent<MeshRenderer>();
+
+        if (playerMeshRenderer != null)
+        {
+            DisableTransparency(playerMeshRenderer.material);
+
+            Color opaqueColor = Color.blue;
+            opaqueColor.a = 1f;
+            playerMeshRenderer.material.color = opaqueColor;
+        }
+    }
+
+    private void EnableTransparency(Material material)
+    {
+        material.SetFloat("_Mode", 3);
+        material.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
+        material.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
+        material.SetInt("_ZWrite", 0);
+        material.DisableKeyword("_ALPHATEST_ON");
+        material.EnableKeyword("_ALPHABLEND_ON");
+        material.DisableKeyword("_ALPHAPREMULTIPLY_ON");
+        material.renderQueue = (int)UnityEngine.Rendering.RenderQueue.Transparent;
+    }
+
+    private void DisableTransparency(Material material)
+    {
+        material.SetFloat("_Mode", 0);
+        material.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.One);
+        material.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.Zero);
+        material.SetInt("_ZWrite", 1);
+        material.DisableKeyword("_ALPHATEST_ON");
+        material.DisableKeyword("_ALPHABLEND_ON");
+        material.DisableKeyword("_ALPHAPREMULTIPLY_ON");
+        material.renderQueue = (int)UnityEngine.Rendering.RenderQueue.Geometry;
     }
 
     private void OnAiming(bool value)

@@ -125,6 +125,15 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Phase"",
+                    ""type"": ""Button"",
+                    ""id"": ""69b8af87-4bca-465c-9dac-7b3781d3d675"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -483,7 +492,7 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""299c1628-e59d-4cb6-b79e-2ebc056e77a0"",
-                    ""path"": ""<Keyboard>/space"",
+                    ""path"": ""<Keyboard>/shift"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -499,6 +508,28 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""AimingMode"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fdc610ab-2787-451a-9313-13e78f3f736c"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Phase"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e218ebcb-84de-476b-8b1f-a986020ea874"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Phase"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -520,6 +551,7 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
         m_CharacterControl_Vocal = m_CharacterControl.FindAction("Vocal", throwIfNotFound: true);
         m_CharacterControl_Drum = m_CharacterControl.FindAction("Drum", throwIfNotFound: true);
         m_CharacterControl_AimingMode = m_CharacterControl.FindAction("AimingMode", throwIfNotFound: true);
+        m_CharacterControl_Phase = m_CharacterControl.FindAction("Phase", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -592,6 +624,7 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
     private readonly InputAction m_CharacterControl_Vocal;
     private readonly InputAction m_CharacterControl_Drum;
     private readonly InputAction m_CharacterControl_AimingMode;
+    private readonly InputAction m_CharacterControl_Phase;
     public struct CharacterControlActions
     {
         private @PlayerControl m_Wrapper;
@@ -607,6 +640,7 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
         public InputAction @Vocal => m_Wrapper.m_CharacterControl_Vocal;
         public InputAction @Drum => m_Wrapper.m_CharacterControl_Drum;
         public InputAction @AimingMode => m_Wrapper.m_CharacterControl_AimingMode;
+        public InputAction @Phase => m_Wrapper.m_CharacterControl_Phase;
         public InputActionMap Get() { return m_Wrapper.m_CharacterControl; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -649,6 +683,9 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
             @AimingMode.started += instance.OnAimingMode;
             @AimingMode.performed += instance.OnAimingMode;
             @AimingMode.canceled += instance.OnAimingMode;
+            @Phase.started += instance.OnPhase;
+            @Phase.performed += instance.OnPhase;
+            @Phase.canceled += instance.OnPhase;
         }
 
         private void UnregisterCallbacks(ICharacterControlActions instance)
@@ -686,6 +723,9 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
             @AimingMode.started -= instance.OnAimingMode;
             @AimingMode.performed -= instance.OnAimingMode;
             @AimingMode.canceled -= instance.OnAimingMode;
+            @Phase.started -= instance.OnPhase;
+            @Phase.performed -= instance.OnPhase;
+            @Phase.canceled -= instance.OnPhase;
         }
 
         public void RemoveCallbacks(ICharacterControlActions instance)
@@ -716,5 +756,6 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
         void OnVocal(InputAction.CallbackContext context);
         void OnDrum(InputAction.CallbackContext context);
         void OnAimingMode(InputAction.CallbackContext context);
+        void OnPhase(InputAction.CallbackContext context);
     }
 }

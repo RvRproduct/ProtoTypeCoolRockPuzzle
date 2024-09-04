@@ -29,6 +29,9 @@ public class PlayerInputManager : MonoBehaviour
     public delegate void Aiming(bool value);
     public static event Aiming OnAiming;
 
+    public delegate void Phase();
+    public static event Phase OnPhase;
+
     // public delegate void Solo(SoloPatterns soloPattern);
     // public static event Solo OnSoloPress;
 
@@ -63,6 +66,13 @@ public class PlayerInputManager : MonoBehaviour
         playerControl.CharacterControl.AimingMode.started += onAimingInput;
         playerControl.CharacterControl.AimingMode.canceled += onAimingInput;
         //playerControl.CharacterControl.AimingMode.started += onAimingInput;
+
+        playerControl.CharacterControl.Phase.started += OnPhaseInput;
+    }
+
+    private void OnPhaseInput(InputAction.CallbackContext context)
+    {
+        OnPhase?.Invoke();
     }
 
     private void onAimingInput(InputAction.CallbackContext context)
