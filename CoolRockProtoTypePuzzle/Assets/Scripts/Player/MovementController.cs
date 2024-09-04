@@ -19,6 +19,7 @@ public class MovementController : MonoBehaviour
     bool isMovementPressed;
     float rotationFactorPerFrame = 15.0f;
     bool isAiming;
+    Color originColor;
 
     private void Awake()
     {
@@ -48,13 +49,14 @@ public class MovementController : MonoBehaviour
 
         MeshRenderer playerMeshRenderer = GetComponent<MeshRenderer>();
 
+        originColor = playerMeshRenderer.material.color;
         if (playerMeshRenderer != null)
         {
             EnableTransparency(playerMeshRenderer.material);
 
-            Color transparentBlue = Color.blue;
-            transparentBlue.a = 0.5f;
-            playerMeshRenderer.material.color = transparentBlue;
+            Color transparentColor = Color.cyan;
+            transparentColor.a = 0.5f;
+            playerMeshRenderer.material.color = transparentColor;
         }
 
         float distance = Vector3.Distance(transform.position, targetPosition);
@@ -98,7 +100,7 @@ public class MovementController : MonoBehaviour
 
             Color opaqueColor = Color.blue;
             opaqueColor.a = 1f;
-            playerMeshRenderer.material.color = opaqueColor;
+            playerMeshRenderer.material.color = originColor;
         }
     }
 
