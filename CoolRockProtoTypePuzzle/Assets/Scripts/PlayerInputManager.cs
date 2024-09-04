@@ -26,6 +26,9 @@ public class PlayerInputManager : MonoBehaviour
     public delegate void Pitching(Vector2 value);
     public static event Pitching OnChangePitch;
 
+    public delegate void Aiming(bool value);
+    public static event Aiming OnAiming;
+
     // public delegate void Solo(SoloPatterns soloPattern);
     // public static event Solo OnSoloPress;
 
@@ -56,6 +59,16 @@ public class PlayerInputManager : MonoBehaviour
         playerControl.CharacterControl.Pitching.started += OnPitchingInput;
         playerControl.CharacterControl.Pitching.canceled += OnPitchingInput;
         playerControl.CharacterControl.Pitching.performed += OnPitchingInput;
+
+        playerControl.CharacterControl.AimingMode.started += onAimingInput;
+        playerControl.CharacterControl.AimingMode.canceled += onAimingInput;
+        //playerControl.CharacterControl.AimingMode.started += onAimingInput;
+    }
+
+    private void onAimingInput(InputAction.CallbackContext context)
+    {
+        bool currentInput = context.ReadValue<float>() > 0.1f ? true : false;
+        OnAiming?.Invoke(currentInput);
     }
 
     private void OnPitchingInput(InputAction.CallbackContext context)
