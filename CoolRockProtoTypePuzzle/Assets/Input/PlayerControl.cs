@@ -116,6 +116,15 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""AimingMode"",
+                    ""type"": ""Button"",
+                    ""id"": ""b5ff85c7-38cd-4cf3-83dd-bbb682876d45"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -470,6 +479,28 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
                     ""action"": ""Pitching"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""299c1628-e59d-4cb6-b79e-2ebc056e77a0"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AimingMode"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b42baa7a-7dd7-4e10-a867-cf9dd44b9cc0"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AimingMode"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -488,6 +519,7 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
         m_CharacterControl_Guitar = m_CharacterControl.FindAction("Guitar", throwIfNotFound: true);
         m_CharacterControl_Vocal = m_CharacterControl.FindAction("Vocal", throwIfNotFound: true);
         m_CharacterControl_Drum = m_CharacterControl.FindAction("Drum", throwIfNotFound: true);
+        m_CharacterControl_AimingMode = m_CharacterControl.FindAction("AimingMode", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -559,6 +591,7 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
     private readonly InputAction m_CharacterControl_Guitar;
     private readonly InputAction m_CharacterControl_Vocal;
     private readonly InputAction m_CharacterControl_Drum;
+    private readonly InputAction m_CharacterControl_AimingMode;
     public struct CharacterControlActions
     {
         private @PlayerControl m_Wrapper;
@@ -573,6 +606,7 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
         public InputAction @Guitar => m_Wrapper.m_CharacterControl_Guitar;
         public InputAction @Vocal => m_Wrapper.m_CharacterControl_Vocal;
         public InputAction @Drum => m_Wrapper.m_CharacterControl_Drum;
+        public InputAction @AimingMode => m_Wrapper.m_CharacterControl_AimingMode;
         public InputActionMap Get() { return m_Wrapper.m_CharacterControl; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -612,6 +646,9 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
             @Drum.started += instance.OnDrum;
             @Drum.performed += instance.OnDrum;
             @Drum.canceled += instance.OnDrum;
+            @AimingMode.started += instance.OnAimingMode;
+            @AimingMode.performed += instance.OnAimingMode;
+            @AimingMode.canceled += instance.OnAimingMode;
         }
 
         private void UnregisterCallbacks(ICharacterControlActions instance)
@@ -646,6 +683,9 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
             @Drum.started -= instance.OnDrum;
             @Drum.performed -= instance.OnDrum;
             @Drum.canceled -= instance.OnDrum;
+            @AimingMode.started -= instance.OnAimingMode;
+            @AimingMode.performed -= instance.OnAimingMode;
+            @AimingMode.canceled -= instance.OnAimingMode;
         }
 
         public void RemoveCallbacks(ICharacterControlActions instance)
@@ -675,5 +715,6 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
         void OnGuitar(InputAction.CallbackContext context);
         void OnVocal(InputAction.CallbackContext context);
         void OnDrum(InputAction.CallbackContext context);
+        void OnAimingMode(InputAction.CallbackContext context);
     }
 }
