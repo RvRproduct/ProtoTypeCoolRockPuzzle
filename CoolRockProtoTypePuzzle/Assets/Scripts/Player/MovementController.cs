@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Cinemachine;
+using System;
 public class MovementController : MonoBehaviour
 {
     [SerializeField] float playerSpeed = 5f;
@@ -14,6 +15,7 @@ public class MovementController : MonoBehaviour
     Vector3 currentMovement;
     bool isMovementPressed;
     float rotationFactorPerFrame = 15.0f;
+    bool isAiming;
 
     private void Awake()
     {
@@ -23,7 +25,18 @@ public class MovementController : MonoBehaviour
         virtualCamera.LookAt = transform;
 
         playerState = GetComponent<PlayerController>().PlayerState;
+    }
+
+    private void Start()
+    {
         PlayerInputManager.OnPlayerMovement += onMovementInput;
+        PlayerInputManager.OnAiming += OnAiming;
+    }
+
+    private void OnAiming(bool value)
+    {
+        isAiming = value;
+        Debug.Log("IsAiming: " + isAiming);
     }
 
     void handleRotation()
@@ -72,7 +85,10 @@ public class MovementController : MonoBehaviour
         {
             handleGravity();
             handleRotation();
-            characterController.Move((currentMovement * playerSpeed) * Time.deltaTime);
+            if(!isAiming)
+            {
+                characterController.Move((currentMovement * playerSpeed) * Time.deltaTime);
+            }
         }
         
     }
