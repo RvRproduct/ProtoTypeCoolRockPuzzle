@@ -148,6 +148,7 @@ public class PlayerController : MonoBehaviour
                     break;
                 case PlayerInstrumentType.Drum:
                     Debug.Log("Drum Special");
+                    currentAttack = Attacks.DrumSpecial;
                     break;
                 case PlayerInstrumentType.Keyboard:
                     Debug.Log("KeyBoard Special");

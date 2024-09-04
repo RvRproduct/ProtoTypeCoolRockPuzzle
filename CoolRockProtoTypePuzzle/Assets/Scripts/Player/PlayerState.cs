@@ -21,6 +21,8 @@ public class PlayerState
 
     private bool playerShootMode = false;
     public bool PlayerShootMode => playerShootMode;
+    private bool playerDrumMode = false;
+    public bool PlaterDrumMode => playerDrumMode;
     //private int playerHealth;
     
     public void InitPlayerState()
@@ -79,6 +81,11 @@ public class PlayerState
     public void OnPlayerPitchActivate(bool activatePitch)
     {
         playerPitchMode = activatePitch;
+    }
+
+    public void OnPlayerDrumAttackActivate(bool activateDrum)
+    {
+        playerDrumMode = activateDrum;
     }
 }
 
