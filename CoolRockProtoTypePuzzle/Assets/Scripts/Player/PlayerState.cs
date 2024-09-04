@@ -21,6 +21,9 @@ public class PlayerState
 
     private bool playerShootMode = false;
     public bool PlayerShootMode => playerShootMode;
+
+    private bool playerGrappleMode = false;
+    public bool PlayerGrappleMode => playerGrappleMode;
     //private int playerHealth;
     
     public void InitPlayerState()
@@ -31,6 +34,7 @@ public class PlayerState
         playerPitchMode = false;
         playerPhaseMode = false;
         playerShootMode = false;
+        playerGrappleMode = false;
     }
 
     public void OnInstrumentChange(PlayerInstrumentType playerInstrumentType)
@@ -64,6 +68,11 @@ public class PlayerState
             playerPitch = updatePitchValue;
         }
 
+    }
+
+    public void OnPlayerGrappleActivate(bool activateGrapple)
+    {
+        playerGrappleMode = activateGrapple;
     }
 
     public void OnPlayerShootActivate(bool activateShoot)
