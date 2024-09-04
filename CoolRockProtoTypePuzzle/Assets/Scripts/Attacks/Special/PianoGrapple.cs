@@ -17,7 +17,7 @@ public class PianoGrapple : MonoBehaviour
 
     private void OnEnable()
     {
-        playerState.OnPlayerShootActivate(!playerState.PlayerShootMode);
+        playerState.OnPlayerGrappleActivate(!playerState.PlayerGrappleMode);
         ShootGrapple();
     }
 
@@ -34,10 +34,8 @@ public class PianoGrapple : MonoBehaviour
             }
             else
             {
-                grapple.tag = "Grapple";
+                grapple.tag = "PieceGrapple";
             }
         }
     }
-
-
 }

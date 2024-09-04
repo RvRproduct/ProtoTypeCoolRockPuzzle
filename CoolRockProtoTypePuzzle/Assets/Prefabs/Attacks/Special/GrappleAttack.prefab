@@ -92,6 +92,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3529539469621383428}
+  - component: {fileID: 6595963481675550222}
   m_Layer: 0
   m_Name: GrappleAttack
   m_TagString: Phase
@@ -120,6 +121,21 @@ Transform:
   - {fileID: 7006049402723109280}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6595963481675550222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3419603407775618633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a1e0e6c09e24df4e897dde1da3c8882, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grapplePrefab: {fileID: 9083831393742968068, guid: 3396eac85cd0c0543a5e5c5cd0d07db9, type: 3}
+  firePoint: {fileID: 7006049402723109280}
+  grapplePieces: 2
 --- !u!1 &5085312184376978441
 GameObject:
   m_ObjectHideFlags: 0

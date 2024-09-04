@@ -151,7 +151,7 @@ public class PlayerController : MonoBehaviour
                     break;
                 case PlayerInstrumentType.Keyboard:
                     Debug.Log("KeyBoard Special");
-                    currentAttack = Attacks.Phase;
+                    currentAttack = Attacks.Grapple;
                     break;
                 case PlayerInstrumentType.Vocal:
                     Debug.Log("Vocal Special");

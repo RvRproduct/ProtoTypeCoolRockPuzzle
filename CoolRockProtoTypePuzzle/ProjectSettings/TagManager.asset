@@ -16,6 +16,7 @@ TagManager:
   - Laser
   - EndGrapple
   - Grapple
+  - PieceGrapple
   layers:
   - Default
   - TransparentFX
