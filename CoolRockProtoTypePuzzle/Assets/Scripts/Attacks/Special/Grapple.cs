@@ -1,15 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Grapple : MonoBehaviour
 {
     private GrappleManager manager;
+    [HideInInspector] public bool lastPieceGrapple = false;
 
-    private void Awake()
+    private void Start()
     {
         manager = GetComponentInParent<GrappleManager>();
         gameObject.tag = "PieceGrapple";
+    }
+
+    private void Update()
+    {
+        if (!manager.playerUsingGrapple)
+        {
+            Destroy(gameObject.transform.parent.gameObject);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -19,11 +29,12 @@ public class Grapple : MonoBehaviour
             manager.grappleConnected = true;
             gameObject.tag = "EndGrapple";
             GameObject playerObject = GameObject.FindWithTag("Player");
-            StartCoroutine(LerpAndDestroy(playerObject));
+            StartCoroutine(LerpedDes(playerObject));
         }
-        else
+
+        if (other.gameObject.tag != "PieceGrapple" && lastPieceGrapple)
         {
-            gameObject.tag = "PieceGrapple";
+            manager.grappleHit = true;
         }
 
         if (other.gameObject.tag == "Player")
@@ -39,6 +50,11 @@ public class Grapple : MonoBehaviour
 
         while (timeElapsed < duration)
         {
+            if (manager.playerNeedsToStop)
+            {
+                yield break;
+            }
+
             Vector3 newPosition = Vector3.Lerp(startingPosition, targetPosition, timeElapsed / duration);
             Vector3 moveDirection = newPosition - startingPosition;
 
@@ -53,11 +69,11 @@ public class Grapple : MonoBehaviour
         player.GetComponent<CharacterController>().Move(finalMoveDirection);
     }
 
-    private IEnumerator LerpAndDestroy(GameObject playerObject)
+    private IEnumerator LerpedDes(GameObject playerObject)
     {
         yield return StartCoroutine(LerpPlayerToPosition(playerObject, transform.position, 1.0f));
 
-        Destroy(gameObject);
+        manager.playerReachedDes = true;
     }
 
 }

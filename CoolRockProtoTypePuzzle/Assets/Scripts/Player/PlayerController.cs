@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private GrappleManager manager;
+
     private PlayerState playerState;
     public PlayerState PlayerState => playerState;
     [SerializeField]
@@ -72,6 +74,15 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (hit.gameObject.CompareTag("AttachGrapple"))
+        {
+            manager.playerNeedsToStop = true;
+        }
+    }
+
+
     public void SetPosition(Vector3 newPosition)
     {
         if(characterController == null) { return; }
@@ -136,7 +147,6 @@ public class PlayerController : MonoBehaviour
         if (playerState.PlayerPitchMode == false && playerState.PlayerGrappleMode == true)
         {
             currentAttack = Attacks.Grapple;
-            OnGrapple(PlayerAttacks.GetAttackName(currentAttack));
         }
 
         if (currentAttackCoolDown >= maxAttackCoolDown)
