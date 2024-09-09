@@ -1461,6 +1461,7 @@ GameObject:
   - component: {fileID: 805014117}
   - component: {fileID: 805014116}
   - component: {fileID: 805014115}
+  - component: {fileID: 805014119}
   m_Layer: 0
   m_Name: Wall
   m_TagString: Untagged
@@ -1554,6 +1555,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!54 &805014119
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 805014114}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &818223480
 GameObject:
   m_ObjectHideFlags: 0
@@ -2356,6 +2384,51 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7952770657601250663, guid: db001c4af9a4e1d4db2d68774cc8beb3, type: 3}
   m_PrefabInstance: {fileID: 1032794630}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1036560172
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1036560173}
+  - component: {fileID: 1036560174}
+  m_Layer: 7
+  m_Name: GrappleManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1036560173
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1036560172}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.18, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1036560174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1036560172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a67b82ac1317e264caa6c1edfc5d6062, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerUsingGrapple: 0
 --- !u!1 &1056047674
 GameObject:
   m_ObjectHideFlags: 0
@@ -2686,6 +2759,7 @@ GameObject:
   - component: {fileID: 1234160086}
   - component: {fileID: 1234160085}
   - component: {fileID: 1234160084}
+  - component: {fileID: 1234160088}
   m_Layer: 0
   m_Name: Wall (14)
   m_TagString: Untagged
@@ -2779,6 +2853,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &1234160088
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1234160083}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1258913591
 GameObject:
   m_ObjectHideFlags: 0
@@ -3352,6 +3453,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4571207236661103231, guid: 86f7ef562f56a084386c080b90e6dd27, type: 3}
+      propertyPath: m_TagString
+      value: Grapple
+      objectReference: {fileID: 0}
     - target: {fileID: 5035751895684766109, guid: 86f7ef562f56a084386c080b90e6dd27, type: 3}
       propertyPath: phaseSpeed
       value: 30
@@ -3360,8 +3465,24 @@ PrefabInstance:
       propertyPath: playerSpeed
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 5444146319154696760, guid: 86f7ef562f56a084386c080b90e6dd27, type: 3}
+      propertyPath: pianoObject
+      value: 
+      objectReference: {fileID: 1036560172}
+    - target: {fileID: 5444146319154696760, guid: 86f7ef562f56a084386c080b90e6dd27, type: 3}
+      propertyPath: playerObject
+      value: 
+      objectReference: {fileID: 662047533}
+    - target: {fileID: 5444146319154696760, guid: 86f7ef562f56a084386c080b90e6dd27, type: 3}
+      propertyPath: grappleManager
+      value: 
+      objectReference: {fileID: 1036560172}
     - target: {fileID: 5954377320880300969, guid: 86f7ef562f56a084386c080b90e6dd27, type: 3}
       propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5954377320880300969, guid: 86f7ef562f56a084386c080b90e6dd27, type: 3}
+      propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -4524,6 +4645,7 @@ SceneRoots:
   - {fileID: 1529074837}
   - {fileID: 1672776093}
   - {fileID: 998669956}
+  - {fileID: 1036560173}
   - {fileID: 805014118}
   - {fileID: 854192691}
   - {fileID: 440465893}

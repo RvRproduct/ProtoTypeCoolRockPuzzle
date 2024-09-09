@@ -8,7 +8,9 @@ public class PianoGrapple : MonoBehaviour
     [SerializeField] private Transform firePoint;
     private float moveFirePoint = 2.0f;
     [SerializeField] private int grapplePieces = 2;
+    [SerializeField] private GameObject grappleManager;
     [HideInInspector] public PlayerState playerState;
+    private GameObject tempGrapple;
 
     private void Awake()
     {
@@ -18,24 +20,47 @@ public class PianoGrapple : MonoBehaviour
     private void OnEnable()
     {
         playerState.OnPlayerGrappleActivate(!playerState.PlayerGrappleMode);
-        ShootGrapple();
+        StartCoroutine(ShootGrapple());
     }
 
-    private void ShootGrapple()
+    private IEnumerator ShootGrapple()
     {
         for (int piece = 0; piece < grapplePieces; piece++)
         {
             GameObject grapple = Instantiate(grapplePrefab, firePoint.position, firePoint.rotation);
-            firePoint.transform.position += new Vector3(0, 0, moveFirePoint);
+            grapple.transform.SetParent(grappleManager.transform, true);
+            tempGrapple = grapple;
 
-            if ((piece + 1) == grapplePieces)
+            Vector3 targetPosition = firePoint.transform.position + (firePoint.transform.forward * moveFirePoint);
+            yield return StartCoroutine(LerpGrapplePieceToPosition(grapple, targetPosition, 5.0f));
+
+            if (tempGrapple.tag == "EndGrapple")
             {
-                grapple.tag = "EndGrapple";
-            }
-            else
-            {
-                grapple.tag = "PieceGrapple";
+                break;
             }
         }
     }
+
+    private IEnumerator LerpGrapplePieceToPosition(GameObject _grapple, Vector3 _targetPosition, float duration)
+    {
+        Vector3 startingPosition = _grapple.transform.position;
+        float timeElapsed = 0;
+
+        while (timeElapsed < duration)
+        {
+            Vector3 newPosition = Vector3.Lerp(startingPosition, _targetPosition, timeElapsed / duration);
+            Vector3 moveDirection = newPosition - startingPosition;
+
+            _grapple.transform.position += moveDirection;
+
+            timeElapsed += Time.deltaTime;
+
+            yield return null;
+        }
+
+        _grapple.transform.position = _targetPosition;
+        firePoint.transform.position = _targetPosition;
+    }
+
+
 }

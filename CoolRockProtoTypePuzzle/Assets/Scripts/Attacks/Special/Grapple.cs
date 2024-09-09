@@ -4,17 +4,30 @@ using UnityEngine;
 
 public class Grapple : MonoBehaviour
 {
-    private void OnCollisionEnter(Collision collision)
+    private GrappleManager manager;
+
+    private void Awake()
     {
-        if (collision.gameObject.tag == "Player")
+        manager = GetComponentInParent<GrappleManager>();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!manager.grappleConnected && other.gameObject.tag == "AttachGrapple")
         {
-            Destroy(gameObject);
+            manager.grappleConnected = true;
+            gameObject.tag = "EndGrapple";
+            GameObject playerObject = GameObject.FindWithTag("Player");
+            StartCoroutine(LerpAndDestroy(playerObject));
+        }
+        else
+        {
+            gameObject.tag = "PieceGrapple";
         }
 
-        if (gameObject.tag == "GrappleEnd")
+        if (other.gameObject.tag == "Player")
         {
-            GameObject playerObject = GameObject.FindWithTag("Player");
-            StartCoroutine(LerpPlayerToPosition(playerObject, transform.position, 1.0f));
+            Destroy(gameObject);
         }
     }
 
@@ -37,6 +50,13 @@ public class Grapple : MonoBehaviour
 
         Vector3 finalMoveDirection = targetPosition - startingPosition;
         player.GetComponent<CharacterController>().Move(finalMoveDirection);
+    }
+
+    private IEnumerator LerpAndDestroy(GameObject playerObject)
+    {
+        yield return StartCoroutine(LerpPlayerToPosition(playerObject, transform.position, 1.0f));
+
+        Destroy(gameObject);
     }
 
 }
