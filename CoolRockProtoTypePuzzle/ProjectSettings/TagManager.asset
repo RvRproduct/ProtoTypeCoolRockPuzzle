@@ -14,6 +14,7 @@ TagManager:
   - Phase
   - Mirror
   - Laser
+  - DrumSpecial
   layers:
   - Default
   - TransparentFX
