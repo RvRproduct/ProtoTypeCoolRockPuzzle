@@ -25,7 +25,8 @@ public static class PlayerAttacks
         { Attacks.Scream, "Scream"},
         { Attacks.Pitch, "Pitch"},
         { Attacks.Phase, "Phase"},
-        { Attacks.Laser, "Laser" }
+        { Attacks.Laser, "Laser" },
+        { Attacks.DrumSpecial, "DrumSpecial" }
     };
 
     public static string GetAttackName(Attacks attack)

@@ -136,6 +136,7 @@ public class PlayerController : MonoBehaviour
         if (currentAttackCoolDown >= maxAttackCoolDown)
         {
             currentAttackCoolDown = 0.0f;
+            maxAttackCoolDown = 0.5f;
 
             if (audioSource == null) { return; }
             audioSource.Play();
@@ -148,6 +149,8 @@ public class PlayerController : MonoBehaviour
                     break;
                 case PlayerInstrumentType.Drum:
                     Debug.Log("Drum Special");
+                    currentAttack = Attacks.DrumSpecial;
+                    maxAttackCoolDown = 1f;
                     break;
                 case PlayerInstrumentType.Keyboard:
                     Debug.Log("KeyBoard Special");
