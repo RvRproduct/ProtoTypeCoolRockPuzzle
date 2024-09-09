@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour
     {
         if (currentAttackCoolDown < maxAttackCoolDown)
         {
-            if (playerState.PlayerPitchMode == false)
+            if (playerState.PlayerPitchMode == false && playerState.PlayerGrappleMode == false)
             {
                 currentAttackCoolDown += Time.deltaTime;
             }
@@ -127,10 +127,16 @@ public class PlayerController : MonoBehaviour
 
     private void OnSpecialAttack()
     {
-        if (playerState.PlayerPitchMode == true)
+        if (playerState.PlayerPitchMode == true && playerState.PlayerGrappleMode == false)
         {
             currentAttack = Attacks.Pitch;
             OnPitching(PlayerAttacks.GetAttackName(currentAttack));
+        }
+
+        if (playerState.PlayerPitchMode == false && playerState.PlayerGrappleMode == true)
+        {
+            currentAttack = Attacks.Grapple;
+            OnGrapple(PlayerAttacks.GetAttackName(currentAttack));
         }
 
         if (currentAttackCoolDown >= maxAttackCoolDown)
@@ -152,6 +158,7 @@ public class PlayerController : MonoBehaviour
                 case PlayerInstrumentType.Keyboard:
                     Debug.Log("KeyBoard Special");
                     currentAttack = Attacks.Grapple;
+                    OnGrapple(PlayerAttacks.GetAttackName(currentAttack));
                     break;
                 case PlayerInstrumentType.Vocal:
                     Debug.Log("Vocal Special");
@@ -160,7 +167,7 @@ public class PlayerController : MonoBehaviour
                     break;
             }
 
-            if (currentAttack != Attacks.None && currentAttack != Attacks.Pitch)
+            if (currentAttack != Attacks.None && currentAttack != Attacks.Pitch && currentAttack != Attacks.Grapple)
             {
                 whichAttack(PlayerAttacks.GetAttackName(currentAttack));
             }
@@ -198,7 +205,7 @@ public class PlayerController : MonoBehaviour
                     break;
             }
 
-            if (currentAttack != Attacks.None && currentAttack != Attacks.Pitch)
+            if (currentAttack != Attacks.None && currentAttack != Attacks.Pitch && currentAttack != Attacks.Grapple)
             {
                 whichAttack(PlayerAttacks.GetAttackName(currentAttack));
             }
@@ -221,6 +228,21 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    private void OnGrapple(string attackName)
+    {
+        playerState.OnPlayerGrappleActivate(!playerState.PlayerGrappleMode);
+
+        foreach (Transform child in transform)
+        {
+            if (child.CompareTag(attackName))
+            {
+                child.gameObject.SetActive(playerState.PlayerGrappleMode);
+                break;
+            }
+        }
+
+    }
+
     private void whichAttack(string attackName)
     {
         foreach (Transform child in transform)
@@ -235,12 +257,13 @@ public class PlayerController : MonoBehaviour
 
     private void resetAttacks(string attackName)
     {
+        currentAttack = Attacks.None;
+
         foreach (Transform child in transform)
         {
             if (child.CompareTag(attackName))
             {
                 child.gameObject.SetActive(false);
-                currentAttack = Attacks.None;
                 break;
             }
         }

@@ -19,7 +19,6 @@ public class PianoGrapple : MonoBehaviour
 
     private void OnEnable()
     {
-        playerState.OnPlayerGrappleActivate(!playerState.PlayerGrappleMode);
         StartCoroutine(ShootGrapple());
     }
 
@@ -32,7 +31,8 @@ public class PianoGrapple : MonoBehaviour
             tempGrapple = grapple;
 
             Vector3 targetPosition = firePoint.transform.position + (firePoint.transform.forward * moveFirePoint);
-            yield return StartCoroutine(LerpGrapplePieceToPosition(grapple, targetPosition, 5.0f));
+            yield return StartCoroutine(LerpGrapplePieceToPosition(grapple, targetPosition, 0.25f));
+
 
             if (tempGrapple.tag == "EndGrapple")
             {
@@ -49,9 +49,8 @@ public class PianoGrapple : MonoBehaviour
         while (timeElapsed < duration)
         {
             Vector3 newPosition = Vector3.Lerp(startingPosition, _targetPosition, timeElapsed / duration);
-            Vector3 moveDirection = newPosition - startingPosition;
 
-            _grapple.transform.position += moveDirection;
+            _grapple.transform.position = newPosition;
 
             timeElapsed += Time.deltaTime;
 
@@ -61,6 +60,4 @@ public class PianoGrapple : MonoBehaviour
         _grapple.transform.position = _targetPosition;
         firePoint.transform.position = _targetPosition;
     }
-
-
 }

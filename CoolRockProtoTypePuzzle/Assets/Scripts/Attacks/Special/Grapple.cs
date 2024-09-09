@@ -9,6 +9,7 @@ public class Grapple : MonoBehaviour
     private void Awake()
     {
         manager = GetComponentInParent<GrappleManager>();
+        gameObject.tag = "PieceGrapple";
     }
 
     private void OnTriggerEnter(Collider other)
