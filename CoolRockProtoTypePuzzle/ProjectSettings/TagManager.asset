@@ -14,6 +14,7 @@ TagManager:
   - Phase
   - Mirror
   - Laser
+  - DrumSpecial
   layers:
   - Default
   - TransparentFX
@@ -24,7 +25,7 @@ TagManager:
   - Phase
   - Player
   - Laser
-  - 
+  - PlayerAttack
   - 
   - 
   - 
