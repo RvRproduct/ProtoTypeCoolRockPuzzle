@@ -5,10 +5,9 @@ using UnityEngine;
 
 public class Laser : MonoBehaviour
 {
-    [SerializeField] private float speed = 200f;
+    [SerializeField] private float laserSpeed = 10f;
     [SerializeField] private float lifeTime = 10f;
-    private Vector3 direction = Vector3.forward;
-    [SerializeField] private Rigidbody rb;
+    private Vector3 direction;
 
     private void Start()
     {
@@ -18,27 +17,28 @@ public class Laser : MonoBehaviour
 
     private void Update()
     {
-        rb.AddForce(direction * speed * Time.deltaTime);
+        transform.position += direction * laserSpeed * Time.deltaTime;
+
+        Ray ray = new Ray(transform.position, direction);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, laserSpeed * Time.deltaTime))
+        {
+            if (hit.collider.CompareTag("Mirror"))
+            {
+                RedirectLaserFromMirror(hit.collider.transform);
+            }
+        }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void RedirectLaserFromMirror(Transform mirrorTransform)
     {
-        Debug.Log("Hit");
+        Vector3 mirrorForward = mirrorTransform.forward;
 
-        if (collision.gameObject.CompareTag("Mirror"))
-        {
+        direction = mirrorForward;
 
-            Debug.Log("Hit");
-            Vector3 normal = collision.contacts[0].normal;
+        transform.position = mirrorTransform.position;
 
-            direction = Vector3.Reflect(direction, normal);
-
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.LookRotation(direction);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        transform.rotation = Quaternion.LookRotation(direction);
     }
 }
