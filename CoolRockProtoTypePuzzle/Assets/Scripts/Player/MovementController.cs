@@ -176,17 +176,21 @@ public class MovementController : MonoBehaviour
 
     void Update()
     {
-        if (!playerState.PlayerPhaseMode && !playerState.PlayerGrappleMode)
+        if (!playerState.PlayerGrappleMode)
         {
             handleGravity();
+        }
+
+        if (!playerState.PlayerPhaseMode && !playerState.PlayerGrappleMode)
+        {
             handleRotation();
-            if(!isAiming)
+            if (!isAiming)
             {
                 characterController.Move((currentMovement * playerSpeed) * Time.deltaTime);
             }
         }
-        
     }
+
     void FixedUpdate()
     {
         // Bit shift the index of the layer (8) to get a bit mask

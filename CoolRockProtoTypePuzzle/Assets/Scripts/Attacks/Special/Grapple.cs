@@ -36,7 +36,7 @@ public class Grapple : MonoBehaviour
             manager.grappleHit = true;
             gameObject.tag = "EndGrapple";
             GameObject playerObject = GameObject.FindWithTag("Player");
-            StartCoroutine(LerpedDes(playerObject));
+            StartCoroutine(LerpedDes(playerObject, other.transform.position));
         }
 
         if (other.gameObject.tag == "Player")
@@ -58,7 +58,7 @@ public class Grapple : MonoBehaviour
             }
 
             Vector3 newPosition = Vector3.Lerp(startingPosition, targetPosition, timeElapsed / duration);
-            Vector3 moveDirection = newPosition - startingPosition;
+            Vector3 moveDirection = newPosition - player.transform.position;
 
             player.GetComponent<CharacterController>().Move(moveDirection);
 
@@ -67,15 +67,15 @@ public class Grapple : MonoBehaviour
             yield return null;
         }
 
-        Vector3 finalMoveDirection = targetPosition - startingPosition;
+        Vector3 finalMoveDirection = targetPosition - player.transform.position;
         player.GetComponent<CharacterController>().Move(finalMoveDirection);
     }
 
-    private IEnumerator LerpedDes(GameObject playerObject)
+    private IEnumerator LerpedDes(GameObject playerObject, Vector3 targetPosition)
     {
         inTheMiddleOfLerpPlayer = true;
 
-        yield return StartCoroutine(LerpPlayerToPosition(playerObject, transform.position, 1.0f));
+        yield return StartCoroutine(LerpPlayerToPosition(playerObject, targetPosition, 1.0f));
 
         manager.playerReachedDes = true;
     }
