@@ -176,7 +176,7 @@ public class MovementController : MonoBehaviour
 
     void Update()
     {
-        if (!playerState.PlayerPhaseMode)
+        if (!playerState.PlayerPhaseMode && !playerState.PlayerGrappleMode)
         {
             handleGravity();
             handleRotation();
