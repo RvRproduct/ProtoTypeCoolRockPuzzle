@@ -13,6 +13,11 @@ public class Grapple : MonoBehaviour
     {
         manager = GetComponentInParent<GrappleManager>();
         gameObject.tag = "PieceGrapple";
+
+        if (gameObject.transform.parent != null)
+        {
+            gameObject.transform.parent.tag = "PieceGrapple";
+        }
     }
 
     private void Update()
@@ -35,10 +40,15 @@ public class Grapple : MonoBehaviour
             manager.grappleConnected = true;
             manager.grappleHit = true;
             gameObject.tag = "EndGrapple";
+            if (gameObject.transform.parent != null)
+            {
+                gameObject.transform.parent.tag = "EndGrapple";
+            }
             GameObject playerObject = GameObject.FindWithTag("Player");
             StartCoroutine(LerpedDes(playerObject, other.transform.position));
         }
     }
+
 
     private IEnumerator LerpPlayerToPosition(GameObject player, Vector3 targetPosition, float duration)
     {

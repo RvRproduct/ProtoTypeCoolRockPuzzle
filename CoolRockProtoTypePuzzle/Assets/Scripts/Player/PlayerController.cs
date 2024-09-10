@@ -83,7 +83,6 @@ public class PlayerController : MonoBehaviour
 
         if (hit.gameObject.CompareTag("PieceGrapple"))
         {
-            Debug.Log("Cope?");
             Destroy(hit.gameObject);
         }
     }

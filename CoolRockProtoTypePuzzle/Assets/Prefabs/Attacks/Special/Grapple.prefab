@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4524404353983496141}
   - component: {fileID: 4860334320632714468}
-  - component: {fileID: 8803040070883471437}
-  m_Layer: 9
+  - component: {fileID: 680466774450093403}
+  m_Layer: 10
   m_Name: TriggerBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8803040070883471437
+--- !u!114 &680466774450093403
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -80,9 +80,9 @@ GameObject:
   - component: {fileID: 3496214496531735850}
   - component: {fileID: 5214915095887053605}
   - component: {fileID: 2553867720991375570}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Grapple
-  m_TagString: PieceGrapple
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -168,7 +168,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3

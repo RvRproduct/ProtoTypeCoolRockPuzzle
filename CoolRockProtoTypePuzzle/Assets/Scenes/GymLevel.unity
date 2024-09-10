@@ -2021,6 +2021,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GrappleObject
       objectReference: {fileID: 0}
+    - target: {fileID: 1661097030741769160, guid: 24cdc6852243d6743a5e2c923c3cb521, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6407545084902765027, guid: 24cdc6852243d6743a5e2c923c3cb521, type: 3}
       propertyPath: m_LocalScale.x
       value: 2
@@ -3391,6 +3395,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GrappleObject (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1661097030741769160, guid: 24cdc6852243d6743a5e2c923c3cb521, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6407545084902765027, guid: 24cdc6852243d6743a5e2c923c3cb521, type: 3}
       propertyPath: m_LocalScale.x
       value: 2
@@ -4616,10 +4624,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1939155768621684335, guid: 86f7ef562f56a084386c080b90e6dd27, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 3136187678372450883, guid: 86f7ef562f56a084386c080b90e6dd27, type: 3}
       propertyPath: manager
       value: 
       objectReference: {fileID: 571836506}
+    - target: {fileID: 3458605540973338656, guid: 86f7ef562f56a084386c080b90e6dd27, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 5035751895684766109, guid: 86f7ef562f56a084386c080b90e6dd27, type: 3}
       propertyPath: phaseSpeed
       value: 30
@@ -4632,8 +4648,16 @@ PrefabInstance:
       propertyPath: m_TagString
       value: DrumSpecial
       objectReference: {fileID: 0}
+    - target: {fileID: 5682306633058051305, guid: 86f7ef562f56a084386c080b90e6dd27, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 5682974327226754318, guid: 86f7ef562f56a084386c080b90e6dd27, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5690177478321936599, guid: 86f7ef562f56a084386c080b90e6dd27, type: 3}
+      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5690177478321936599, guid: 86f7ef562f56a084386c080b90e6dd27, type: 3}
@@ -4648,10 +4672,26 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6854450071124308439, guid: 86f7ef562f56a084386c080b90e6dd27, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 7931979263208476200, guid: 86f7ef562f56a084386c080b90e6dd27, type: 3}
       propertyPath: grappleManager
       value: 
       objectReference: {fileID: 571836505}
+    - target: {fileID: 8290903398123269167, guid: 86f7ef562f56a084386c080b90e6dd27, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 9116523459863871814, guid: 86f7ef562f56a084386c080b90e6dd27, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 9196528672405234837, guid: 86f7ef562f56a084386c080b90e6dd27, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
