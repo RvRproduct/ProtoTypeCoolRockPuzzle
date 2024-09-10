@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 6595963481675550222}
   m_Layer: 0
   m_Name: GrappleAttack
-  m_TagString: Phase
+  m_TagString: Grapple
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -135,7 +135,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grapplePrefab: {fileID: 9083831393742968068, guid: 3396eac85cd0c0543a5e5c5cd0d07db9, type: 3}
   firePoint: {fileID: 7006049402723109280}
-  grapplePieces: 2
+  grapplePieces: 5
   grappleManager: {fileID: 0}
 --- !u!1 &5085312184376978441
 GameObject:

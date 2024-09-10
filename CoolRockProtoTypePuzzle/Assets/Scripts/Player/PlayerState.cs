@@ -19,6 +19,9 @@ public class PlayerState
     private bool playerPhaseMode = false;
     public bool PlayerPhaseMode => playerPhaseMode;
 
+    private bool playerGrappleMode = false;
+    public bool PlayerGrappleMode => playerGrappleMode;
+
     private bool playerShootMode = false;
     public bool PlayerShootMode => playerShootMode;
     private bool playerDrumMode = false;
@@ -33,6 +36,8 @@ public class PlayerState
         playerPitchMode = false;
         playerPhaseMode = false;
         playerShootMode = false;
+        playerDrumMode = false;
+        playerGrappleMode = false;
     }
 
     public void OnInstrumentChange(PlayerInstrumentType playerInstrumentType)
@@ -76,6 +81,11 @@ public class PlayerState
     public void OnPlayerPhaseActivate(bool activatePhase)
     {
         playerPhaseMode = activatePhase;
+    }
+
+    public void OnPlayerGrappleActivate(bool activateGrapple)
+    {
+        playerGrappleMode = activateGrapple;
     }
 
     public void OnPlayerPitchActivate(bool activatePitch)

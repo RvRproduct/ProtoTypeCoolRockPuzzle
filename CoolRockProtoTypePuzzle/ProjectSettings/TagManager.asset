@@ -15,6 +15,10 @@ TagManager:
   - Mirror
   - Laser
   - DrumSpecial
+  - Grapple
+  - AttachGrapple
+  - EndGrapple
+  - PieceGrapple
   layers:
   - Default
   - TransparentFX
@@ -26,7 +30,7 @@ TagManager:
   - Player
   - Laser
   - PlayerAttack
-  - 
+  - Grapple
   - 
   - 
   - 
