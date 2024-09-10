@@ -7,6 +7,7 @@ public class Grapple : MonoBehaviour
 {
     private GrappleManager manager;
     [HideInInspector] public bool lastPieceGrapple = false;
+    private bool inTheMiddleOfLerpPlayer = false;
 
     private void Start()
     {
@@ -20,6 +21,11 @@ public class Grapple : MonoBehaviour
         {
             Destroy(gameObject.transform.parent.gameObject);
         }
+
+        if (!inTheMiddleOfLerpPlayer && lastPieceGrapple)
+        {
+            manager.DestroyGrapplePieces();
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -27,19 +33,15 @@ public class Grapple : MonoBehaviour
         if (!manager.grappleConnected && other.gameObject.tag == "AttachGrapple")
         {
             manager.grappleConnected = true;
+            manager.grappleHit = true;
             gameObject.tag = "EndGrapple";
             GameObject playerObject = GameObject.FindWithTag("Player");
             StartCoroutine(LerpedDes(playerObject));
         }
 
-        if (other.gameObject.tag != "PieceGrapple" && lastPieceGrapple)
-        {
-            manager.grappleHit = true;
-        }
-
         if (other.gameObject.tag == "Player")
         {
-            Destroy(gameObject);
+            Destroy(gameObject.transform.parent.gameObject);
         }
     }
 
@@ -71,6 +73,8 @@ public class Grapple : MonoBehaviour
 
     private IEnumerator LerpedDes(GameObject playerObject)
     {
+        inTheMiddleOfLerpPlayer = true;
+
         yield return StartCoroutine(LerpPlayerToPosition(playerObject, transform.position, 1.0f));
 
         manager.playerReachedDes = true;

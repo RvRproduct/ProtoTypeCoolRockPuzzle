@@ -6,6 +6,7 @@ public class PianoGrapple : MonoBehaviour
 {
     [SerializeField] private GameObject grapplePrefab;
     [SerializeField] private Transform firePoint;
+
     private float moveFirePoint = 2.0f;
     [SerializeField] private int grapplePieces = 5;
     [SerializeField] private GameObject grappleManager;
@@ -53,13 +54,13 @@ public class PianoGrapple : MonoBehaviour
             GameObject grapple = Instantiate(grapplePrefab, tempFirePointPosition, tempFirePointRotation);
             grapple.transform.SetParent(grappleManager.transform, true);
 
+            Vector3 targetPosition = tempFirePointPosition + (firePoint.transform.forward * moveFirePoint);
+            yield return StartCoroutine(LerpGrapplePieceToPosition(grapple, targetPosition, 0.25f));
+
             if (piece + 1 == grapplePieces)
             {
                 grapple.GetComponentInChildren<Grapple>().lastPieceGrapple = true;
             }
-
-            Vector3 targetPosition = tempFirePointPosition + (firePoint.transform.forward * moveFirePoint);
-            yield return StartCoroutine(LerpGrapplePieceToPosition(grapple, targetPosition, 0.25f));
 
             tempFirePointPosition = targetPosition;
 
@@ -80,6 +81,7 @@ public class PianoGrapple : MonoBehaviour
         {
             if (grappleManager.GetComponent<GrappleManager>().grappleHit)
             {
+
                 manager.stopEarly = true;
 
                 yield break;

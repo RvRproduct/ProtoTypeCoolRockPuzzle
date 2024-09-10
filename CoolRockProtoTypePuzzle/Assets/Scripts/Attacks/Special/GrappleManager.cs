@@ -28,6 +28,7 @@ public class GrappleManager : MonoBehaviour
         playerReachedDes = false;
         grappleHit = false;
         playerUsingGrapple = false;
+        stopEarly = false;
 
         List<GameObject> children = new List<GameObject>();
 
@@ -40,8 +41,6 @@ public class GrappleManager : MonoBehaviour
         {
             Destroy(child);
         }
-
-        Debug.Log("PAin?");
 
         playerState.OnPlayerGrappleActivate(!playerState.PlayerGrappleMode);
     }
