@@ -80,6 +80,12 @@ public class PlayerController : MonoBehaviour
         {
             manager.playerNeedsToStop = true;
         }
+
+        if (hit.gameObject.CompareTag("PieceGrapple"))
+        {
+            Debug.Log("Cope?");
+            Destroy(hit.gameObject);
+        }
     }
 
 

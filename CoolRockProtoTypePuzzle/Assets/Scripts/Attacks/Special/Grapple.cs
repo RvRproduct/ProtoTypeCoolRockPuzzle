@@ -38,11 +38,6 @@ public class Grapple : MonoBehaviour
             GameObject playerObject = GameObject.FindWithTag("Player");
             StartCoroutine(LerpedDes(playerObject, other.transform.position));
         }
-
-        if (other.gameObject.tag == "Player")
-        {
-            Destroy(gameObject.transform.parent.gameObject);
-        }
     }
 
     private IEnumerator LerpPlayerToPosition(GameObject player, Vector3 targetPosition, float duration)

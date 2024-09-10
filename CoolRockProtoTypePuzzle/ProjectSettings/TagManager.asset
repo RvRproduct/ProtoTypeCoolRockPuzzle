@@ -19,6 +19,7 @@ TagManager:
   - AttachGrapple
   - EndGrapple
   - PieceGrapple
+  - PlayerD
   layers:
   - Default
   - TransparentFX
