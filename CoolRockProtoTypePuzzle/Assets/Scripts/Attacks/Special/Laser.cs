@@ -6,7 +6,7 @@ using UnityEngine;
 public class Laser : MonoBehaviour
 {
     [SerializeField] private float laserSpeed = 10f;
-    [SerializeField] private float lifeTime = 10f;
+    [SerializeField] private float lifeTime = 7f;
     private Vector3 direction;
 
     private void Start()
