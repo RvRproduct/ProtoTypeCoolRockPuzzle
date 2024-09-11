@@ -8,7 +8,7 @@ public class InteractableNpcA : InteractableNpc
     protected override void DoGuitarNormalBehavior()
     {
         //follow player
-        var step =  2.5f * Time.deltaTime;
+        var step =  10f * Time.deltaTime;
         if(currentPlayer != null)
         {
             transform.position = Vector3.MoveTowards(transform.position, currentPlayer.transform.position, step);

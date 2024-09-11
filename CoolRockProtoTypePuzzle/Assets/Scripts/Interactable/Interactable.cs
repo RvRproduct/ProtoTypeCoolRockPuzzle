@@ -23,7 +23,7 @@ public abstract class Interactable : MonoBehaviour
         else
         {
             sphereCollider = gameObject.AddComponent<SphereCollider>();
-            sphereCollider.radius = interactRange;
+            sphereCollider.radius = interactRange / gameObject.transform.localScale.x;
             sphereCollider.isTrigger = true;
         }
     }
@@ -31,14 +31,14 @@ public abstract class Interactable : MonoBehaviour
     {
         if(meshRenderer != null)
         {
-            meshRenderer.material.SetColor("_Color", Color.yellow);
+            //meshRenderer.material.SetColor("_Color", Color.yellow);
         }
     }
     protected virtual void OnTriggerExit(Collider other) 
     {
         if(meshRenderer != null)
         {
-            meshRenderer.material.SetColor("_Color", Color.white);
+            //meshRenderer.material.SetColor("_Color", Color.white);
         }
         this.player = null;
     }
