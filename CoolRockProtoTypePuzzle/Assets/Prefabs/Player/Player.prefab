@@ -509,6 +509,10 @@ MonoBehaviour:
   drum: {fileID: 8300000, guid: 05fc9dc025b460e44bd4614b5d161e4d, type: 3}
   keyboard: {fileID: 8300000, guid: 5de9245a129c5e94f9df873a4cf6d77e, type: 3}
   vocal: {fileID: 8300000, guid: 1e69440838a1cbc4185c30adb7733de0, type: 3}
+  guitarSpecial: {fileID: 8300000, guid: dfd30d9cbfc706f4e8209115cd447311, type: 3}
+  drumSpecial: {fileID: 8300000, guid: e4104e6eb501adb4d8f08bf17365c0de, type: 3}
+  keyboardSpecial: {fileID: 8300000, guid: 06fac5595265e0347916b6cf0062af12, type: 3}
+  vocalSpecial: {fileID: 8300000, guid: 63b7eb53a9262b44eb3b37344a601883, type: 3}
   audioSource: {fileID: 1309180487285913031}
 --- !u!82 &1309180487285913031
 AudioSource:
