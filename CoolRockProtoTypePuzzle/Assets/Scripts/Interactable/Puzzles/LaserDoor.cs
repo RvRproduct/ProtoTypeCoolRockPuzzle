@@ -12,7 +12,7 @@ public class LaserDoor : MonoBehaviour
         {
             if (ActivatedAllMirrorKeys())
             {
-                Destroy(gameObject);
+                Destroy(transform.parent.gameObject);
             }
         }
     }

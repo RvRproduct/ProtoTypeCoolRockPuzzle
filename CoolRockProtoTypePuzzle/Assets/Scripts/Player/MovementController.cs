@@ -62,16 +62,23 @@ public class MovementController : MonoBehaviour
         float distance = Vector3.Distance(transform.position, targetPosition);
         float lerpDuration = distance / phaseSpeed;
 
-        StartCoroutine(LerpPostion(targetPosition, lerpDuration));
+        StartCoroutine(LerpPosition(targetPosition, lerpDuration));
     }
 
-    private IEnumerator LerpPostion(Vector3 _targetPosition, float lerpTime)
+    private IEnumerator LerpPosition(Vector3 _targetPosition, float lerpTime)
     {
         float timeElapsed = 0f;
         Vector3 startPosition = transform.position;
+        float groundCheckThreshold = 1.5f;
 
         while (timeElapsed < lerpTime)
         {
+            if (!IsCloseEnoughToGround(groundCheckThreshold))
+            {
+                OnLerpComplete();
+                yield break;
+            }
+
             Vector3 newPosition = Vector3.Lerp(startPosition, _targetPosition, timeElapsed / lerpTime);
             Vector3 moveDirection = newPosition - transform.position;
 
@@ -85,6 +92,17 @@ public class MovementController : MonoBehaviour
         characterController.Move(finalMoveDirection);
 
         OnLerpComplete();
+    }
+
+    private bool IsCloseEnoughToGround(float threshold)
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, threshold))
+        {
+
+            return true;
+        }
+        return false;
     }
 
     private void OnLerpComplete()

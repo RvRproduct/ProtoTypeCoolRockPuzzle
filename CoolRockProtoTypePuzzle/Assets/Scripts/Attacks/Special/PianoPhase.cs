@@ -43,26 +43,45 @@ public class PianoPhase : MonoBehaviour
         float distance = Vector3.Distance(parentTransform.position, targetPosition);
         float lerpDuration = distance / speed;
 
-        StartCoroutine(LerpPostion(targetPosition, lerpDuration));
+        StartCoroutine(LerpPosition(targetPosition, lerpDuration));
     }
 
-    private IEnumerator LerpPostion(Vector3 _targetPosition, float lerpTime)
+    private IEnumerator LerpPosition(Vector3 _targetPosition, float lerpTime)
     {
         float timeElapsed = 0f;
         Vector3 startPosition = parentTransform.position;
+        Vector3 gravityEffect = Vector3.zero;
+        float gravity = -9.81f; // You can modify this value to match your game's gravity
+        float verticalVelocity = 0f;
 
         while (timeElapsed < lerpTime)
         {
+            // Apply gravity if not grounded
+            if (!characterController.isGrounded)
+            {
+                verticalVelocity += gravity * Time.deltaTime;
+            }
+            else
+            {
+                verticalVelocity = 0f; // Reset vertical velocity when grounded
+            }
+
             Vector3 newPosition = Vector3.Lerp(startPosition, _targetPosition, timeElapsed / lerpTime);
             Vector3 moveDirection = newPosition - parentTransform.position;
 
+            // Add gravity effect to the moveDirection
+            moveDirection.y += verticalVelocity * Time.deltaTime;
+
+            // Move the character
             characterController.Move(moveDirection);
 
             timeElapsed += Time.deltaTime;
             yield return null;
         }
 
+        // Final move to the exact target position
         Vector3 finalMoveDirection = _targetPosition - parentTransform.position;
+        finalMoveDirection.y += verticalVelocity * Time.deltaTime;
         characterController.Move(finalMoveDirection);
 
         OnLerpComplete();
