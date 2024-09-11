@@ -4,19 +4,33 @@ using UnityEngine;
 
 public class DestructiblePitch : MonoBehaviour
 {
-    private bool pitchFinished = false;
     private int currentPitchLevel = 0;
     private int startPitchLevel = 0;
     private int endPitchLevel = 2;
-    [SerializeField] private int squareGrid = 1; 
+    [SerializeField] private int squareGrid = 1;
+
+    [SerializeField] private bool grow = false;
 
     [SerializeField] List<Vector2> pitchLevels = new List<Vector2> { new Vector2(0, 1), new Vector2(0, 1), new Vector2(0, 1) };
+
+    private void Start()
+    {
+        if (grow)
+        {
+            transform.parent.localScale = new Vector3(4, 4, 4);
+        }
+        else
+        {
+            transform.parent.localScale = new Vector3(8, 8, 8);
+        }
+    }
+
     public List<Vector2> PitchLevels
     {
         get { return pitchLevels; }
         set
         {
-            for (int i = 0; i <pitchLevels.Count; i++)
+            for (int i = 0; i < pitchLevels.Count; i++)
             {
                 pitchLevels[i] = new Vector2(
                     Mathf.Clamp(Mathf.RoundToInt(value[i].x), 0, squareGrid),
@@ -45,11 +59,6 @@ public class DestructiblePitch : MonoBehaviour
 
     private void Update()
     {
-        if (pitchFinished)
-        {
-            Destroy(gameObject);
-        }
-
         if (closeEnough)
         {
             if (currentPitchLevel >= startPitchLevel && currentPitchLevel <= endPitchLevel)
@@ -66,7 +75,7 @@ public class DestructiblePitch : MonoBehaviour
             }
 
             pitchSucceeded();
-            pitchFailed();
+            // pitchFailed();
         }
     }
 
@@ -152,17 +161,30 @@ public class DestructiblePitch : MonoBehaviour
 
     private void visualIfInPitchRange()
     {
-        transform.rotation = Quaternion.Slerp(transform.rotation, transform.rotation * Quaternion.Euler(0, 5, 0), Time.deltaTime * 8.0f);
+        transform.parent.rotation = Quaternion.Slerp(transform.parent.rotation, transform.parent.rotation * Quaternion.Euler(0, 5, 0), Time.deltaTime * 8.0f);
     }
+
+    private void onPitchChangeSize()
+    {
+        if (grow)
+        {
+            transform.parent.localScale += new Vector3(2, 2, 2);
+        }
+        else
+        {
+            transform.parent.localScale -= new Vector3(2, 2, 2);
+        }
+    }
+
 
     private void onPitchLevelComplete()
     {
-        transform.localScale -= new Vector3(2, 2, 2);
+        transform.parent.transform.localScale -= new Vector3(2, 2, 2);
     }
 
     private void onPitchLevelIncomplete()
     {
-        transform.localScale += new Vector3(2, 2, 2);
+        transform.parent.transform.localScale += new Vector3(2, 2, 2);
     }
 
     private void pitchSucceeded()
@@ -172,7 +194,7 @@ public class DestructiblePitch : MonoBehaviour
             if (currentPitchLevel < endPitchLevel)
             {
                 currentPitchLevel++;
-                onPitchLevelComplete();
+                onPitchChangeSize();
                 setHitPitchThreshHold = false;
                 setPitchThreshHold();
                 currentHitPitchTime = 0;
@@ -181,7 +203,9 @@ public class DestructiblePitch : MonoBehaviour
             }
             else
             {
-                pitchFinished = true;
+                grow = !grow;
+                pitchLevels.Reverse();
+                currentPitchLevel = 0;
             }
         }
     }
