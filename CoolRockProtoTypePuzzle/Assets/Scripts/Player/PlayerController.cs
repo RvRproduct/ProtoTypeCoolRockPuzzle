@@ -31,6 +31,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private AudioClip vocal;
     [SerializeField]
+    private AudioClip guitarSpecial;
+    [SerializeField]
+    private AudioClip drumSpecial;
+    [SerializeField]
+    private AudioClip keyboardSpecial;
+    [SerializeField]
+    private AudioClip vocalSpecial;
+    [SerializeField]
     private AudioSource audioSource;
 
     public delegate void NormalAttack(Attacks attacks);
@@ -114,23 +122,19 @@ public class PlayerController : MonoBehaviour
         {
             case PlayerInstrumentType.Guitar:   
                 SetPlayerColor(Color.red);
-                audioSource.clip = guitar;
                 //Debug.Log("Guitar");
                 break;
             case PlayerInstrumentType.Drum:
                 SetPlayerColor(Color.green);
                 //Debug.Log("Drum");
-                audioSource.clip = drum;
                 break;
             case PlayerInstrumentType.Keyboard:
                 SetPlayerColor(Color.blue);
                 //Debug.Log("KeyBoard");
-                audioSource.clip = keyboard;
                 break;
             case PlayerInstrumentType.Vocal:
-                SetPlayerColor(Color.gray);
+                SetPlayerColor(Color.yellow);
                 //Debug.Log("Vocal");
-                audioSource.clip = vocal;
                 break;
         }
     }
@@ -160,30 +164,34 @@ public class PlayerController : MonoBehaviour
             maxAttackCoolDown = 0.5f;
 
             if (audioSource == null) { return; }
-            audioSource.Play();
 
             switch (playerState.CurrnetInstrument)
             {
                 case PlayerInstrumentType.Guitar:
                     Debug.Log("Guitar Special");
+                    audioSource.clip = guitarSpecial;
                     currentAttack = Attacks.Laser;
                     break;
                 case PlayerInstrumentType.Drum:
                     Debug.Log("Drum Special");
                     currentAttack = Attacks.DrumSpecial;
                     maxAttackCoolDown = 1f;
+                    audioSource.clip = drumSpecial;
                     break;
                 case PlayerInstrumentType.Keyboard:
                     Debug.Log("KeyBoard Special");
                     currentAttack = Attacks.Grapple;
                     OnGrapple(PlayerAttacks.GetAttackName(currentAttack));
+                    audioSource.clip = keyboardSpecial;
                     break;
                 case PlayerInstrumentType.Vocal:
                     Debug.Log("Vocal Special");
                     currentAttack = Attacks.Pitch;
                     OnPitching(PlayerAttacks.GetAttackName(currentAttack));
+                    audioSource.clip = vocalSpecial;
                     break;
             }
+            audioSource.Play();
 
             if (currentAttack != Attacks.None && currentAttack != Attacks.Pitch && currentAttack != Attacks.Grapple)
             {
@@ -199,29 +207,33 @@ public class PlayerController : MonoBehaviour
             currentAttackCoolDown = 0.0f;
 
             if (audioSource == null) { return; }
-            audioSource.Play();
 
             switch (playerState.CurrnetInstrument)
             {
                 case PlayerInstrumentType.Guitar:
                     //Debug.Log("Guitar Normal");
+                    audioSource.clip = guitar;
                     OnChangeNPCBehavior?.Invoke(Attacks.GuitarNormal);
                     //invoke npcbehavior
                     break;
                 case PlayerInstrumentType.Drum:
                     //Debug.Log("Drum Normal");
+                    audioSource.clip = drum;
                     OnChangeNPCBehavior?.Invoke(Attacks.DrumNormal);
                     break;
                 case PlayerInstrumentType.Keyboard:
                     //Debug.Log("KeyBoard Normal");
+                    audioSource.clip = keyboard;
                     OnChangeNPCBehavior?.Invoke(Attacks.KeyboardNormal);
                     break;
                 case PlayerInstrumentType.Vocal:
                     //Debug.Log("Vocal Normal");
+                    audioSource.clip = vocal;
                     OnChangeNPCBehavior?.Invoke(Attacks.Scream);
                     currentAttack = Attacks.Scream;
                     break;
             }
+            audioSource.Play();
 
             if (currentAttack != Attacks.None && currentAttack != Attacks.Pitch && currentAttack != Attacks.Grapple)
             {
