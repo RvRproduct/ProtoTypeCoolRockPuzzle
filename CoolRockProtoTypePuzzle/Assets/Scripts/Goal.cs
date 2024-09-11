@@ -15,6 +15,10 @@ public class Goal : MonoBehaviour
         {
             Destroy(npcA.gameObject);
             currentCount++;
+            if(currentCount >= 5)
+            {
+                Debug.Log("YOU ARE A SUPER STAR");
+            }
         }
     }
 
