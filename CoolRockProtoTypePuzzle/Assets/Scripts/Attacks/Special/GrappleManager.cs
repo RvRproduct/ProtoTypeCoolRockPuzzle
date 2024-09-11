@@ -10,12 +10,13 @@ public class GrappleManager : MonoBehaviour
     [HideInInspector] public bool grappleHit = false;
     [HideInInspector] public bool playerNeedsToStop = false;
     [HideInInspector] public bool stopEarly = false;
+    [SerializeField]
+    private GameObject playerObject;
     private PlayerState playerState;
     private PianoGrapple pianoGrapple;
 
     private void Start()
     {
-        GameObject playerObject = GameObject.FindWithTag("Player");
         playerState = playerObject.GetComponent<PlayerController>().PlayerState;
         pianoGrapple = playerObject.GetComponentInChildren<PianoGrapple>();
     }
