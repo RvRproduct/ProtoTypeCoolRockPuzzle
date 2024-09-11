@@ -863,6 +863,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5203484061440722613, guid: 0c86f837ca1eb744f81df099f592da5f, type: 3}
+      propertyPath: m_TagString
+      value: DrumSpecial
+      objectReference: {fileID: 0}
     - target: {fileID: 7226390779587825733, guid: 0c86f837ca1eb744f81df099f592da5f, type: 3}
       propertyPath: m_LocalScale.y
       value: 0.19
