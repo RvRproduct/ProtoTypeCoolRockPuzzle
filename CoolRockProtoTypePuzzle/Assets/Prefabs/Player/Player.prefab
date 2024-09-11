@@ -255,6 +255,57 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &4909818070840129484
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6312391585222908836}
+  - component: {fileID: 4013138850789898334}
+  m_Layer: 0
+  m_Name: GrappleManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6312391585222908836
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4909818070840129484}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -31.627747, y: 920.43915, z: -1.7098247}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1518911965826500537}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4013138850789898334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4909818070840129484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a67b82ac1317e264caa6c1edfc5d6062, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerUsingGrapple: 0
+  grappleConnected: 0
+  playerReachedDes: 0
+  grappleHit: 0
+  playerNeedsToStop: 0
+  stopEarly: 0
+  playerObject: {fileID: 5954377320880300969}
 --- !u!1 &5152910065393288267
 GameObject:
   m_ObjectHideFlags: 0
@@ -373,6 +424,7 @@ Transform:
   - {fileID: 1928767296990297723}
   - {fileID: 7058051534438285036}
   - {fileID: 389259797619724578}
+  - {fileID: 6312391585222908836}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7735450429524036295
@@ -501,7 +553,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7661631af102ad843ae7fdb012dc3166, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manager: {fileID: 0}
+  manager: {fileID: 4013138850789898334}
   playerMesh: {fileID: 4817744779692086967}
   maxAttackCoolDown: 0.5
   currentAttack: 0
@@ -1093,6 +1145,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6595963481675550222, guid: 5e9d779134d59b64fb48ae230d75081b, type: 3}
+      propertyPath: grappleManager
+      value: 
+      objectReference: {fileID: 4909818070840129484}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
