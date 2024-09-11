@@ -27,6 +27,8 @@ public class Laser : MonoBehaviour
             if (hit.collider.CompareTag("Mirror"))
             {
                 RedirectLaserFromMirror(hit.collider.transform);
+                hit.collider.gameObject.GetComponent<InteractableMirror>().activatedMirror = true;
+                hit.collider.gameObject.GetComponent<InteractableMirror>().ResetCoolDown();
             }
         }
     }

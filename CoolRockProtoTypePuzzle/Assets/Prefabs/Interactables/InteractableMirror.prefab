@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 943217179767687282}
   m_Layer: 0
   m_Name: Mirror
-  m_TagString: Mirror
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -204,6 +204,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactRange: 3
+  activatedMirror: 0
+  coolDown: 5
 --- !u!54 &7645419004290607808
 Rigidbody:
   m_ObjectHideFlags: 0

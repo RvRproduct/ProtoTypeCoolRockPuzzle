@@ -20,6 +20,7 @@ TagManager:
   - EndGrapple
   - PieceGrapple
   - PlayerD
+  - LaserProjectile
   layers:
   - Default
   - TransparentFX
