@@ -6,19 +6,19 @@ public class InteractableNpcC : InteractableNpc
 {
     [SerializeField]
     private float speed = 5;
-    private float target = -12;
+    private float target = 80;
     protected override void Update()
     {
         base.Update();
         var step =  speed * Time.deltaTime;
-        transform.position = Vector3.MoveTowards(transform.position, new Vector3(target, transform.position.y, transform.position.z), step);
-        if(transform.position.x < -10)
+        transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, transform.position.y, target), step);
+        if(transform.position.z < 35)
         {
-            target = 12;
+            target = 80;
         }
-        else if(transform.position.x > 10)
+        else if(transform.position.z > 75)
         {
-            target = -12;
+            target = 30;
         }
     }
     protected override void DoGuitarNormalBehavior()

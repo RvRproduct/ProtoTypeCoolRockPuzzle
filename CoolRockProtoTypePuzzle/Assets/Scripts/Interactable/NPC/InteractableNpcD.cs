@@ -6,6 +6,7 @@ public class InteractableNpcD : InteractableNpc
 {
     [SerializeField]
     private Transform targetPosition;
+    private bool startMove = false;
     protected override void DoGuitarNormalBehavior()
     {
         
@@ -20,6 +21,20 @@ public class InteractableNpcD : InteractableNpc
     }
     protected override void DoVocalNormalBehavior()
     {
+        if(currentPlayer == null) { return;}
+        startMove = true;
+        
+    }
+
+    protected override void Update() 
+    {
+        base.Update();
+        Move();
+    }
+
+    private void Move()
+    {
+        if(!startMove) { return;}
         //move to specific position
         var step =  5f * Time.deltaTime; // calculate distance to move
         transform.position = Vector3.MoveTowards(transform.position, targetPosition.position, step);
