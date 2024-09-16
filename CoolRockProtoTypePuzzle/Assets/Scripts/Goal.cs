@@ -9,6 +9,7 @@ public class Goal : MonoBehaviour
     private GameObject player;
     [SerializeField]
     private Vector3 startPoint;
+    private Vector3 originPosition;
     private int currentCount = 0;
     private void OnTriggerEnter(Collider other) {
         if(other.gameObject.TryGetComponent<InteractableNpcA>(out InteractableNpcA npcA))
@@ -22,11 +23,16 @@ public class Goal : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        originPosition = player.transform.position;
+    }
+
     private void Update()
     {
         if(player.transform.position.y < -1)
         {
-            player.transform.position = startPoint;
+            player.transform.position = originPosition;
         }
     }
 }
