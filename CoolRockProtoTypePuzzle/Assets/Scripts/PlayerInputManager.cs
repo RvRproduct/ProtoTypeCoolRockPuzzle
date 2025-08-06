@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerInputManager : MonoBehaviour
 {
@@ -68,6 +69,23 @@ public class PlayerInputManager : MonoBehaviour
         //playerControl.CharacterControl.AimingMode.started += onAimingInput;
 
         playerControl.CharacterControl.Phase.started += OnPhaseInput;
+
+        playerControl.CharacterControl.ChangeLevel.started += OnChangeLevelInput;
+
+
+    }
+
+    private void OnChangeLevelInput(InputAction.CallbackContext context)
+    {
+        if (SceneManager.GetActiveScene().name == "GymLevel")
+        {
+            SceneManager.LoadScene("GymLevel 2");
+        }
+        else
+        {
+            SceneManager.LoadScene("GymLevel");
+        }
+        
     }
 
     private void OnPhaseInput(InputAction.CallbackContext context)

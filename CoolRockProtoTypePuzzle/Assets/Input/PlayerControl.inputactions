@@ -112,6 +112,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "ChangeLevel",
+                    "type": "Button",
+                    "id": "e3f53033-7ffa-4527-b4e2-a4d18ea5b896",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -508,6 +517,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Phase",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b2567ee2-1a7d-4379-9c71-f5c227836900",
+                    "path": "<Keyboard>/backspace",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ChangeLevel",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

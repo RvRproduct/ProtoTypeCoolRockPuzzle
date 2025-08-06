@@ -134,6 +134,15 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ChangeLevel"",
+                    ""type"": ""Button"",
+                    ""id"": ""e3f53033-7ffa-4527-b4e2-a4d18ea5b896"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -532,6 +541,17 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
                     ""action"": ""Phase"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b2567ee2-1a7d-4379-9c71-f5c227836900"",
+                    ""path"": ""<Keyboard>/backspace"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeLevel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -552,6 +572,7 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
         m_CharacterControl_Drum = m_CharacterControl.FindAction("Drum", throwIfNotFound: true);
         m_CharacterControl_AimingMode = m_CharacterControl.FindAction("AimingMode", throwIfNotFound: true);
         m_CharacterControl_Phase = m_CharacterControl.FindAction("Phase", throwIfNotFound: true);
+        m_CharacterControl_ChangeLevel = m_CharacterControl.FindAction("ChangeLevel", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -625,6 +646,7 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
     private readonly InputAction m_CharacterControl_Drum;
     private readonly InputAction m_CharacterControl_AimingMode;
     private readonly InputAction m_CharacterControl_Phase;
+    private readonly InputAction m_CharacterControl_ChangeLevel;
     public struct CharacterControlActions
     {
         private @PlayerControl m_Wrapper;
@@ -641,6 +663,7 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
         public InputAction @Drum => m_Wrapper.m_CharacterControl_Drum;
         public InputAction @AimingMode => m_Wrapper.m_CharacterControl_AimingMode;
         public InputAction @Phase => m_Wrapper.m_CharacterControl_Phase;
+        public InputAction @ChangeLevel => m_Wrapper.m_CharacterControl_ChangeLevel;
         public InputActionMap Get() { return m_Wrapper.m_CharacterControl; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -686,6 +709,9 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
             @Phase.started += instance.OnPhase;
             @Phase.performed += instance.OnPhase;
             @Phase.canceled += instance.OnPhase;
+            @ChangeLevel.started += instance.OnChangeLevel;
+            @ChangeLevel.performed += instance.OnChangeLevel;
+            @ChangeLevel.canceled += instance.OnChangeLevel;
         }
 
         private void UnregisterCallbacks(ICharacterControlActions instance)
@@ -726,6 +752,9 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
             @Phase.started -= instance.OnPhase;
             @Phase.performed -= instance.OnPhase;
             @Phase.canceled -= instance.OnPhase;
+            @ChangeLevel.started -= instance.OnChangeLevel;
+            @ChangeLevel.performed -= instance.OnChangeLevel;
+            @ChangeLevel.canceled -= instance.OnChangeLevel;
         }
 
         public void RemoveCallbacks(ICharacterControlActions instance)
@@ -757,5 +786,6 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
         void OnDrum(InputAction.CallbackContext context);
         void OnAimingMode(InputAction.CallbackContext context);
         void OnPhase(InputAction.CallbackContext context);
+        void OnChangeLevel(InputAction.CallbackContext context);
     }
 }
